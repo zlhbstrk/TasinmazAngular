@@ -12,7 +12,7 @@ export class IlService {
 
   constructor(private http:HttpClient) { }
 
-  readonly baseURL = 'http://localhost:5001/api/Il/Add'
+  readonly baseURL = 'https://localhost:5001/api/Il/Add'
 
   Ekle(il:Il) : Observable<Il>
   {
@@ -27,8 +27,6 @@ export class IlService {
       icon: 'error',
       confirmButtonText:'Tamam'
     })
-
     return throwError('İl servisinde hata oluştu');
   }
-
 }

@@ -1,6 +1,6 @@
 export class Il
 {
-    ID!:number;
+    Id!:number;
     Ad!:string;
-    Plaka!:string
+    Plaka!:number
 }

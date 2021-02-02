@@ -13,8 +13,7 @@ export class IlEkleComponent implements OnInit {
   constructor(private servis: IlService) {}
   form = new FormGroup({
     Ad: new FormControl('', [Validators.required]),
-    Plaka: new FormControl('', [Validators.required]),
-    ID: new FormControl('', [Validators.required]),
+    Plaka: new FormControl('', [Validators.required])
   });
   model!: Il;
   onSubmit() {
