@@ -1,0 +1,54 @@
+<div class="card card-primary">
+    <div class="card-header">
+      <h3 class="card-title">Taşınmaz Ekle</h3>
+    </div>
+
+    <form [formGroup]='form' (ngSubmit)='onSubmit()'>
+      <div class="card-body">
+        <div class="form-group">
+            <label>İl Adı</label>
+            <select formControlName="IlId" class="form-control">
+                <option *ngFor="let il of iller" value="{{il.id}}">
+                    {{il.ad}}
+                </option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label>İlçe Adı</label>
+            <select formControlName="IlceId" class="form-control">
+                <option *ngFor="let ilce of ilceler" value="{{ilce.id}}">
+                    {{ilce.ad}}
+                </option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label>Mahalle Adı</label>
+            <select formControlName="MahalleId" class="form-control">
+                <option *ngFor="let mahalle of mahalleler" value="{{mahalle.id}}">
+                    {{mahalle.ad}}
+                </option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label>Ada</label>
+            <input type="text" class="form-control"  placeholder="Ada Bilgisi giriniz." formControlName="Ada">
+        </div>
+        <div class="form-group">
+            <label>Parsel</label>
+            <input type="text" class="form-control"  placeholder="Parsel Bilgisi giriniz." formControlName="Parsel">
+        </div>
+        <div class="form-group">
+            <label>Nitelik</label>
+            <input type="text" class="form-control"  placeholder="Nitelik Bilgisi giriniz." formControlName="Nitelik">
+        </div>
+        <div class="form-group">
+            <label>Adres</label>
+            <textarea rows="5" cols="50" class="form-control"  placeholder="Adres Bilgisi giriniz." formControlName="Adres"></textarea>
+        </div>
+
+      <div class="card-footer">
+        <button type="submit" class="btn btn-primary">KAYDET</button>
+      </div>
+    </div>
+    </form>
+</div>

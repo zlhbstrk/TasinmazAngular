@@ -36,12 +36,6 @@ export class MahalleEkleComponent implements OnInit {
     });
   }
 
-  // ngOnChance(): void {
-  //   this.ilceService.GetirIlce().subscribe((data) => {
-  //     this.ilceler = data;
-  //   });
-  // }
-
   onSubmit(){
     if(this.form.valid) {
       this.model = this.form.value;

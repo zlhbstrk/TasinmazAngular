@@ -10,12 +10,12 @@
           <input type="text" class="form-control" placeholder="İlçe Adı giriniz." formControlName="Ad">
         </div>
         <div class="form-group">
-            <label>İl</label>
-            <select formControlName="IlId" class="form-control">
-              <option *ngFor="let il of iller" value="{{il.id}}">
-                {{il.ad}}
-              </option>
-            </select>
+          <label>İl</label>
+          <select formControlName="IlId" class="form-control">
+            <option *ngFor="let il of iller" value="{{il.id}}">
+              {{il.ad}}
+            </option>
+          </select>
         </div>
       </div>
 

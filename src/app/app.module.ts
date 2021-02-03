@@ -14,6 +14,7 @@ import { IlListeleComponent } from './Il/il-listele/il-listele.component';
 import { MahalleEkleComponent } from './Mahalle/mahalle-ekle/mahalle-ekle.component';
 import { IlceEkleComponent } from './Ilce/ilce-ekle/ilce-ekle.component';
 import { KullaniciEkleComponent } from './Kullanici/kullanici-ekle/kullanici-ekle.component';
+import { TasinmazEkleComponent } from './Tasinmaz/tasinmaz-ekle/tasinmaz-ekle.component';
 
 @NgModule({
   declarations: [
@@ -26,6 +27,7 @@ import { KullaniciEkleComponent } from './Kullanici/kullanici-ekle/kullanici-ekl
     MahalleEkleComponent,
     IlceEkleComponent,
     KullaniciEkleComponent,
+    TasinmazEkleComponent,
   ],
   imports: [
     BrowserModule,
