@@ -14,20 +14,21 @@ export class KullaniciEkleComponent implements OnInit {
 
   constructor(private kullaniciServis:KullaniciService) { }
 
-  yetkiTipi!:YetkiTipi[];
+  yetkiTipi:any[] = [
+    {yetkiAd: "Sistem Yöneticisi", yetkiKod:YetkiTipi.sistemYoneticisi},
+    {yetkiAd: "Kullanıcı", yetkiKod:YetkiTipi.kullanici}
+  ];
   model!:Kullanici;
 
   form = new FormGroup({
-    Ad: new FormControl(null, [Validators.required]),
-    Soyad: new FormControl(null, [Validators.required]),
+    Ad: new FormControl(null),
+    Soyad: new FormControl(null),
     Email: new FormControl(null, [Validators.required]),
     Sifre: new FormControl(null, [Validators.required]),
     YetkiTipi: new FormControl(null, [Validators.required])
   });
 
   ngOnInit(): void {
-    this.yetkiTipi[0] = YetkiTipi.sistemYoneticisi;
-    this.yetkiTipi[1] = YetkiTipi.kullanici;
   }
 
   onSubmit(){

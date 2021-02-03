@@ -24,8 +24,8 @@
           <div class="form-group">
             <label>Yetki Tipi</label>
             <select formControlName="YetkiTipi" class="form-control">
-              <option *ngFor="let yt of yetkiTipi" value="{{yt}}">
-                {{yt[]}}
+              <option *ngFor="let yt of yetkiTipi" value="{{yt.yetkiKod}}">
+                {{yt.yetkiAd}}
               </option>
             </select>
         </div>

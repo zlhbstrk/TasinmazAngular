@@ -23,7 +23,7 @@ export class KullaniciService {
   {
     return this.http.get<Kullanici[]>(this.baseURL + "GetAll").pipe(catchError(this.handleError));
   }
-
+  
   handleError(err: HttpErrorResponse){
     Swal.fire({
       title: "Hatalı",
