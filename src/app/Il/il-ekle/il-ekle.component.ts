@@ -10,33 +10,30 @@ import Swal from 'sweetalert2';
   styleUrls: ['./il-ekle.component.css'],
 })
 export class IlEkleComponent implements OnInit {
-  constructor(private servis: IlService) {}
+
+  constructor(private ilServis:IlService) {}
+
+  model!:Il;
+
   form = new FormGroup({
-    Ad: new FormControl('', [Validators.required]),
-    Plaka: new FormControl('', [Validators.required])
+    Ad: new FormControl(null, [Validators.required]),
+    Plaka: new FormControl(null, [Validators.required])
   });
-  model!: Il;
+  
   onSubmit() {
     if (this.form.valid) {
       this.model = this.form.value;
-      this.servis.Ekle(this.model).subscribe(data => {
+      this.ilServis.Ekle(this.model).subscribe((data) => {
         if (data) {
           Swal.fire({
-            title: 'başarı!',
-            text: 'Do you want to continue',
+            title: 'Başarılı',
+            text: 'İl başarıyla eklendi.',
             icon: 'success',
-            confirmButtonText: 'okk',
+            confirmButtonText: 'Tamam',
           });
         }
       });
     }
-    // Swal.fire({
-    //   title: 'başarı!',
-    //   text: 'Do you want to continue',
-    //   icon: 'success',
-    //   confirmButtonText: 'okk'
-    // }).then(()=>{
-    // })
   }
   ngOnInit(): void {}
 }

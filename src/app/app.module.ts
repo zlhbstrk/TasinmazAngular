@@ -10,6 +10,10 @@ import { IlEkleComponent } from './Il/il-ekle/il-ekle.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
 import { HttpClientModule } from '@angular/common/http';
+import { IlListeleComponent } from './Il/il-listele/il-listele.component';
+import { MahalleEkleComponent } from './Mahalle/mahalle-ekle/mahalle-ekle.component';
+import { IlceEkleComponent } from './Ilce/ilce-ekle/ilce-ekle.component';
+import { KullaniciEkleComponent } from './Kullanici/kullanici-ekle/kullanici-ekle.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +21,11 @@ import { HttpClientModule } from '@angular/common/http';
     NavComponent,
     HeaderComponent,
     FooterComponent,
-    IlEkleComponent
+    IlEkleComponent,
+    IlListeleComponent,
+    MahalleEkleComponent,
+    IlceEkleComponent,
+    KullaniciEkleComponent,
   ],
   imports: [
     BrowserModule,

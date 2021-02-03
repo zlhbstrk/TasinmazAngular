@@ -12,21 +12,25 @@ export class IlService {
 
   constructor(private http:HttpClient) { }
 
-  readonly baseURL = 'https://localhost:5001/api/Il/Add'
+  readonly baseURL = 'https://localhost:5001/api/Il/'
 
   Ekle(il:Il) : Observable<Il>
   {
-    //alert(JSON.stringify(Object));
-   return this.http.post<Il>(this.baseURL,il).pipe(catchError(this.handleError));
+   return this.http.post<Il>(this.baseURL + 'Add',il).pipe(catchError(this.handleError));
+  }
+
+  GetirIl() :Observable<Il[]>
+  {
+    return this.http.get<Il[]>(this.baseURL + "GetAll").pipe(catchError(this.handleError));
   }
 
   handleError(err: HttpErrorResponse){
     Swal.fire({
-      title: "Hata",
-      text: "İl servisinde bir hata oluştu.",
+      title: "Hatalı",
+      text: "İl servisinde hata oluştu!",
       icon: 'error',
       confirmButtonText:'Tamam'
     })
-    return throwError('İl servisinde hata oluştu');
+    return throwError('İl servisinde hata oluştu!');
   }
 }

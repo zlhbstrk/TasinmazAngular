@@ -1,0 +1,34 @@
+<div class="card card-primary">
+    <div class="card-header">
+      <h3 class="card-title">Mahalle Ekle</h3>
+    </div>
+
+    <form [formGroup]='form' (ngSubmit)='onSubmit()'>
+      <div class="card-body">
+        <div class="form-group">
+          <label>Mahalle Adı</label>
+          <input type="text" class="form-control" placeholder="Mahalle Adı giriniz." formControlName="Ad">
+        </div>
+        <div class="form-group">
+            <label>İl</label>
+            <select formControlName="IlId" class="form-control">
+              <option *ngFor="let il of iller" value="{{il.id}}">
+                {{il.ad}}
+              </option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label>İlçe</label>
+            <select formControlName="IlceId" class="form-control">
+              <option *ngFor="let ilce of ilceler" value="{{ilce.id}}">
+                {{ilce.ad}}
+              </option>
+            </select>
+        </div>
+      </div>
+
+      <div class="card-footer">
+        <button type="submit" class="btn btn-primary">KAYDET</button>
+      </div>
+    </form>
+  </div>

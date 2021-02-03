@@ -1,0 +1,38 @@
+<div class="card card-primary">
+    <div class="card-header">
+      <h3 class="card-title">Kullanıcı Ekle</h3>
+    </div>
+
+    <form [formGroup]='form' (ngSubmit)='onSubmit()'>
+      <div class="card-body">
+        <div class="form-group">
+          <label>Ad</label>
+          <input type="text" class="form-control" placeholder="Kullanıcı Adı giriniz." formControlName="Ad">
+        </div>
+        <div class="form-group">
+          <label>Soyad</label>
+          <input type="text" class="form-control"  placeholder="Kullanıcı Soyadı giriniz." formControlName="Soyad">
+        </div>
+        <div class="form-group">
+            <label>E-mail</label>
+            <input type="email" class="form-control"  placeholder="E-mail giriniz." formControlName="Email">
+          </div>
+          <div class="form-group">
+            <label>Şifre</label>
+            <input type="text" class="form-control"  placeholder="Şifre giriniz." formControlName="Sifre">
+          </div>
+          <div class="form-group">
+            <label>Yetki Tipi</label>
+            <select formControlName="YetkiTipi" class="form-control">
+              <option *ngFor="let yt of yetkiTipi" value="{{yt}}">
+                {{yt[]}}
+              </option>
+            </select>
+        </div>
+      </div>
+
+      <div class="card-footer">
+        <button type="submit" class="btn btn-primary">KAYDET</button>
+      </div>
+    </form>
+  </div>
