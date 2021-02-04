@@ -15,6 +15,9 @@ import { MahalleEkleComponent } from './Mahalle/mahalle-ekle/mahalle-ekle.compon
 import { IlceEkleComponent } from './Ilce/ilce-ekle/ilce-ekle.component';
 import { KullaniciEkleComponent } from './Kullanici/kullanici-ekle/kullanici-ekle.component';
 import { TasinmazEkleComponent } from './Tasinmaz/tasinmaz-ekle/tasinmaz-ekle.component';
+import { DataTablesModule } from 'angular-datatables';
+import { RouterModule } from '@angular/router';
+import { KullaniciListeleComponent } from './Kullanici/kullanici-listele/kullanici-listele.component';
 
 @NgModule({
   declarations: [
@@ -28,13 +31,16 @@ import { TasinmazEkleComponent } from './Tasinmaz/tasinmaz-ekle/tasinmaz-ekle.co
     IlceEkleComponent,
     KullaniciEkleComponent,
     TasinmazEkleComponent,
+    KullaniciListeleComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
     SweetAlert2Module,
-    HttpClientModule
+    HttpClientModule,
+    RouterModule,
+    DataTablesModule
   ],
   providers: [],
   bootstrap: [AppComponent]

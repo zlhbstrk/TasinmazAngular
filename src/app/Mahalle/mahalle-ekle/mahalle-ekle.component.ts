@@ -1,3 +1,4 @@
+import { LEADING_TRIVIA_CHARS } from '@angular/compiler/src/render3/view/template';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Il } from 'src/Models/Il';
@@ -18,7 +19,8 @@ export class MahalleEkleComponent implements OnInit {
   constructor(private ilServis:IlService, private ilceServis:IlceService, private mahalleServis:MahalleService) { }
 
   iller!:Il[];
-  ilceler!:Ilce[];
+  tumIlceler!:Ilce[];
+  ilceler:Ilce[] = [];
   model!:Mahalle;
 
   form = new FormGroup({
@@ -32,7 +34,24 @@ export class MahalleEkleComponent implements OnInit {
       this.iller = data;
     }),
     this.ilceServis.GetirIlce().subscribe((data) => {
-      this.ilceler = data;
+      this.tumIlceler = data;
+    });
+  }
+
+  onIlChanged(){
+    //seçitğim il alıcak
+    //tüm ileçelerdeki il id leri ile karşılaştırıp 
+    //ilçelere atacak
+
+    const ilId:number = this.form.controls['IlId'].value;
+    this.ilceler = this.tumIlceler.filter((e)=>{
+      // if(e.IlId == ilId)
+      // {
+      //   return true;
+      // }else{
+      //   return false;
+      // }
+      return e.IlId == ilId;
     });
   }
 
@@ -43,7 +62,7 @@ export class MahalleEkleComponent implements OnInit {
         if(data) {
           Swal.fire({
             title: 'Başarılı',
-            text: 'Mahalle başarıyla eklendi.',
+            text: 'Mahalle ekleme işlemi başarıyla tamamlandı.',
             icon: 'success',
             confirmButtonText: 'Tamam',
           });

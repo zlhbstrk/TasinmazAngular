@@ -24,6 +24,11 @@ export class IlService {
     return this.http.get<Il[]>(this.baseURL + "GetAll").pipe(catchError(this.handleError));
   }
 
+  Sil(id:number) 
+  {
+    return this.http.delete(this.baseURL + "Delete/"+ id).pipe(catchError(this.handleError));
+  }
+
   handleError(err: HttpErrorResponse){
     Swal.fire({
       title: "Hatalı",

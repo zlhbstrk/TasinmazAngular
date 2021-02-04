@@ -2,8 +2,6 @@ import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
-import { Il } from 'src/Models/Il';
-import { Ilce } from 'src/Models/Ilce';
 import { Mahalle } from 'src/Models/Mahalle';
 import Swal from 'sweetalert2';
 

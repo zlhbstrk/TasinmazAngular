@@ -1,11 +1,11 @@
 import { YetkiTipi } from "src/Helpers/YetkiTipi";
 
 export class Kullanici {
-    id!:number;
-    email!:string;
-    yetki!:YetkiTipi;
-    sifre!:string;
-    ad!:string;
-    soyad!:string;
-    aktifMi!:boolean
+    Id!:number;
+    Email!:string;
+    Yetki!:number;
+    Sifre!:string;
+    Ad!:string;
+    Soyad!:string;
+    AktifMi!:boolean
 }

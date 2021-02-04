@@ -7,13 +7,15 @@
       <div class="card-body">
         <div class="form-group">
           <label>İlçe Adı</label>
-          <input type="text" class="form-control" placeholder="İlçe Adı giriniz." formControlName="Ad">
+          <input type="text" class="form-control" placeholder="İlçe Adı Giriniz." formControlName="Ad"
+          [class]="form.get('Ad')!.invalid ? 'is-invalid' : 'is-valid'">
         </div>
         <div class="form-group">
           <label>İl</label>
-          <select formControlName="IlId" class="form-control">
-            <option *ngFor="let il of iller" value="{{il.id}}">
-              {{il.ad}}
+          <select formControlName="IlId" class="form-control"
+          [class]="form.get('IlId')!.invalid ? 'is-invalid' : 'is-valid'">
+            <option *ngFor="let il of iller" value="{{il.Id}}">
+              {{il.Ad}}
             </option>
           </select>
         </div>

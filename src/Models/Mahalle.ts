@@ -1,7 +1,7 @@
 export class Mahalle
 {
-    id!:number;
-    ilid!:number;
-    ilceid!:number;
-    ad!:string;
+    Id!:number;
+    IlId!:number;
+    IlceId!:number;
+    Ad!:string;
 }

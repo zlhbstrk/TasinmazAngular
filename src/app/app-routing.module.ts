@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { IlEkleComponent } from './Il/il-ekle/il-ekle.component';
+import { IlListeleComponent } from './Il/il-listele/il-listele.component';
 import { IlceEkleComponent } from './Ilce/ilce-ekle/ilce-ekle.component';
 import { KullaniciEkleComponent } from './Kullanici/kullanici-ekle/kullanici-ekle.component';
 import { MahalleEkleComponent } from './Mahalle/mahalle-ekle/mahalle-ekle.component';
@@ -11,7 +12,8 @@ const routes: Routes = [
   { path: 'ilceekle', component: IlceEkleComponent },
   { path: 'mahalleekle', component: MahalleEkleComponent},
   { path: 'kullaniciekle', component: KullaniciEkleComponent},
-  { path: 'tasinmazekle', component: TasinmazEkleComponent}
+  { path: 'tasinmazekle', component: TasinmazEkleComponent},
+  { path: 'illistele', component: IlListeleComponent}
 ];
 
 @NgModule({

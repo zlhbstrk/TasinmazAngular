@@ -23,9 +23,9 @@ export class KullaniciEkleComponent implements OnInit {
   form = new FormGroup({
     Ad: new FormControl(null),
     Soyad: new FormControl(null),
-    Email: new FormControl(null, [Validators.required]),
-    Sifre: new FormControl(null, [Validators.required]),
-    YetkiTipi: new FormControl(null, [Validators.required])
+    Email: new FormControl(null, [Validators.required,Validators.pattern("^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$")]),
+    Sifre: new FormControl(null, [Validators.required,Validators.minLength(8)]),
+    Yetki: new FormControl(null, [Validators.required])
   });
 
   ngOnInit(): void {
@@ -34,11 +34,13 @@ export class KullaniciEkleComponent implements OnInit {
   onSubmit(){
     if(this.form.valid) {
       this.model = this.form.value;
+      this.model!.Yetki! = parseInt(this.form.controls['Yetki'].value);
+      this.model.AktifMi = true;
       this.kullaniciServis.Ekle(this.model).subscribe((data) => {
         if(data) {
           Swal.fire({
             title: 'Başarılı',
-            text: 'Kullanıcı başarıyla eklendi.',
+            text: 'Kullanıcı ekleme işlemi başarıyla tamamlandı.',
             icon: 'success',
             confirmButtonText: 'Tamam',
           });

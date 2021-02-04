@@ -1,6 +1,6 @@
 export class Ilce
 {
-    id!:number;
-    ilid!:number;
-    ad!:string;
+    Id!:number;
+    IlId!:number;
+    Ad!:string;
 }

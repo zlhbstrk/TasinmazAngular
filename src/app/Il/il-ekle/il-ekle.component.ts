@@ -3,6 +3,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Il } from 'src/Models/Il';
 import { IlService } from 'src/Services/il.service';
 import Swal from 'sweetalert2';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-il-ekle',
@@ -27,10 +28,11 @@ export class IlEkleComponent implements OnInit {
         if (data) {
           Swal.fire({
             title: 'Başarılı',
-            text: 'İl başarıyla eklendi.',
+            text: 'İl ekleme işlemi başarıyla tamamlandı.',
             icon: 'success',
             confirmButtonText: 'Tamam',
           });
+          //this.router.navigate(['/ilekle']);
         }
       });
     }
