@@ -21,7 +21,7 @@ export class MahalleListeleComponent implements OnInit {
   mahalleler: Mahalle[] = [];
   ilceler: Ilce[] = [];
   iller: Il[] = [];
-  dtTrigger: Subject<Ilce> = new Subject<Ilce>();
+  dtTrigger: Subject<Mahalle> = new Subject<Mahalle>();
 
   ngOnInit(): void {
     this.dtOptions = {

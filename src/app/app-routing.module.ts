@@ -6,6 +6,7 @@ import { IlceEkleComponent } from './Ilce/ilce-ekle/ilce-ekle.component';
 import { IlceListeleComponent } from './Ilce/ilce-listele/ilce-listele.component';
 import { KullaniciEkleComponent } from './Kullanici/kullanici-ekle/kullanici-ekle.component';
 import { KullaniciListeleComponent } from './Kullanici/kullanici-listele/kullanici-listele.component';
+import { LogListeleComponent } from './Log/log-listele/log-listele.component';
 import { MahalleEkleComponent } from './Mahalle/mahalle-ekle/mahalle-ekle.component';
 import { MahalleListeleComponent } from './Mahalle/mahalle-listele/mahalle-listele.component';
 import { TasinmazEkleComponent } from './Tasinmaz/tasinmaz-ekle/tasinmaz-ekle.component';
@@ -21,7 +22,8 @@ const routes: Routes = [
   { path: 'kullanicilistele', component: KullaniciListeleComponent},
   { path: 'ilcelistele', component: IlceListeleComponent},
   { path: 'mahallelistele', component: MahalleListeleComponent},
-  { path: 'tasinmazlistele', component: TasinmazListeleComponent}
+  { path: 'tasinmazlistele', component: TasinmazListeleComponent},
+  { path: 'loglistele', component: LogListeleComponent}
 ];
 
 @NgModule({

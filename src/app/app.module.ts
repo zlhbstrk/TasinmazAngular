@@ -21,6 +21,7 @@ import { KullaniciListeleComponent } from './Kullanici/kullanici-listele/kullani
 import { IlceListeleComponent } from './Ilce/ilce-listele/ilce-listele.component';
 import { MahalleListeleComponent } from './Mahalle/mahalle-listele/mahalle-listele.component';
 import { TasinmazListeleComponent } from './Tasinmaz/tasinmaz-listele/tasinmaz-listele.component';
+import { LogListeleComponent } from './Log/log-listele/log-listele.component';
 
 @NgModule({
   declarations: [
@@ -38,6 +39,7 @@ import { TasinmazListeleComponent } from './Tasinmaz/tasinmaz-listele/tasinmaz-l
     IlceListeleComponent,
     MahalleListeleComponent,
     TasinmazListeleComponent,
+    LogListeleComponent,
   ],
   imports: [
     BrowserModule,
