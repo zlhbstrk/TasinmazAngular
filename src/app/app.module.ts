@@ -18,6 +18,7 @@ import { TasinmazEkleComponent } from './Tasinmaz/tasinmaz-ekle/tasinmaz-ekle.co
 import { DataTablesModule } from 'angular-datatables';
 import { RouterModule } from '@angular/router';
 import { KullaniciListeleComponent } from './Kullanici/kullanici-listele/kullanici-listele.component';
+import { IlceListeleComponent } from './Ilce/ilce-listele/ilce-listele.component';
 
 @NgModule({
   declarations: [
@@ -32,6 +33,7 @@ import { KullaniciListeleComponent } from './Kullanici/kullanici-listele/kullani
     KullaniciEkleComponent,
     TasinmazEkleComponent,
     KullaniciListeleComponent,
+    IlceListeleComponent,
   ],
   imports: [
     BrowserModule,

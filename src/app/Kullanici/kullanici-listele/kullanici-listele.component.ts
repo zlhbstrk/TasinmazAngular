@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { Subject } from 'rxjs';
+import { Kullanici } from 'src/Models/Kullanici';
+import { KullaniciService } from 'src/Services/kullanici.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-kullanici-listele',
@@ -7,9 +11,52 @@ import { Component, OnInit } from '@angular/core';
 })
 export class KullaniciListeleComponent implements OnInit {
 
-  constructor() { }
+  constructor(private KullaniciServis: KullaniciService) { }
+
+  dtOptions = {};
+  kullanicilar: Kullanici[] = [];
+  dtTrigger: Subject<Kullanici> = new Subject<Kullanici>();
 
   ngOnInit(): void {
-  }
+    this.dtOptions = {
+      dom: 'Bfrtip',
+      pagingType: 'full_numbers',
+      pageLength: 10,
+      buttons: [
+        'excel'
+      ]
+    };
 
+    this.KullaniciServis.GetirKullanici().subscribe((data) => {
+      this.kullanicilar = data;
+      this.dtTrigger.next();
+    });
+  }
+  
+  Sil(id:number){
+    Swal.fire({
+      title: 'Silmek istediğinize emin misiniz?',
+      text: "Silinen kayıt geri getirilemez!",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Evet, Sil!',
+      cancelButtonText: 'İptal'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.KullaniciServis.Sil(id).subscribe(()=> {
+            Swal.fire(
+              'Silindi!',
+              'Silme işlemi başarıyla tamamlandı.',
+              'success'
+            ).then(() => {
+              this.KullaniciServis.GetirKullanici().subscribe((data) => {
+                this.kullanicilar = data;
+              });
+            });
+        });
+      }
+    })
+  }
 }

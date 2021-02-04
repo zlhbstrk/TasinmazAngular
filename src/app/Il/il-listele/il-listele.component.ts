@@ -11,7 +11,7 @@ import Swal from 'sweetalert2';
 })
 export class IlListeleComponent implements OnInit {
 
-  constructor(private service: IlService) { }
+  constructor(private IlServis: IlService) { }
   
   dtOptions = {};
   iller: Il[] = [];
@@ -27,13 +27,13 @@ export class IlListeleComponent implements OnInit {
       ]
     };
 
-    this.service.GetirIl().subscribe((data) => {
+    this.IlServis.GetirIl().subscribe((data) => {
       this.iller = data;
       this.dtTrigger.next();
     });
   }
 
-  sil(id:number){
+  Sil(id:number){
     Swal.fire({
       title: 'Silmek istediğinize emin misiniz?',
       text: "Silinen kayıt geri getirilemez!",
@@ -45,13 +45,13 @@ export class IlListeleComponent implements OnInit {
       cancelButtonText: 'İptal'
     }).then((result) => {
       if (result.isConfirmed) {
-        this.service.Sil(id).subscribe(()=> {
+        this.IlServis.Sil(id).subscribe(()=> {
             Swal.fire(
               'Silindi!',
               'Silme işlemi başarıyla tamamlandı.',
               'success'
             ).then(() => {
-              this.service.GetirIl().subscribe((data) => {
+              this.IlServis.GetirIl().subscribe((data) => {
                 this.iller = data;
               });
              // this.router.navigate(['/illistele']);

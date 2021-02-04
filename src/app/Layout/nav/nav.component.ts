@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { NgModule } from '@angular/core';
+import { RouterModule, Routes } from '@angular/router';
+import { KullaniciEkleComponent } from 'src/app/Kullanici/kullanici-ekle/kullanici-ekle.component';
 
 @Component({
   selector: 'app-nav',
@@ -8,6 +11,13 @@ import { Component, OnInit } from '@angular/core';
 export class NavComponent implements OnInit {
 
   constructor() { }
+
+  // routes: Routes = [
+  //   {
+  //     path: 'kullaniciekle',
+  //     pathMatch: 'KullaniciEkleComponent'
+  //   }
+  // ];
 
   ngOnInit(): void {
   }

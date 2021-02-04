@@ -1,1 +1,70 @@
-<p>kullanici-listele works!</p>
+<div class="row">
+    <div class="col-md-12">
+      <div class="card card-primary card-outline">
+        <div class="card-header">
+          <h3 class="card-title">Kullanıcı Listele Ekranı</h3>
+        </div>
+        <div class="card-body">
+          <div id="example1_wrapper" class="dataTables_wrapper dt-bootstrap4">
+            <div class="row">
+              <div class="col-sm-12">
+                <div
+                  id="example1_wrapper"
+                  class="dataTables_wrapper dt-bootstrap4 no-footer"
+                >
+                  <div class="row">
+                    <div class="col-sm-12">
+                      <table
+                        datatable
+                        [dtOptions]="dtOptions"
+                        [dtTrigger]="dtTrigger"
+                        class="table table-bordered table-striped dataTable dtr-inline no-footer"
+                      >
+                        <thead>
+                          <tr>
+                            <th>Adı</th>
+                            <th>Soyadı</th>
+                            <th>E-mail</th>
+                            <th>Şifre</th>
+                            <th>Yetki</th>
+                            <th style="width: 95px;" >İşlemler</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr *ngFor="let kullanici of kullanicilar">
+                            <td>{{ kullanici.Ad }}</td>
+                            <td>{{ kullanici.Soyad }}</td>
+                            <td>{{ kullanici.Email }}</td>
+                            <td>{{ kullanici.Sifre }}</td>
+                            <td>{{ kullanici.Yetki }}</td>
+                            <td>
+                              <a
+                                class="btn btn-primary btn-xs"
+                                routerLink="/kullanicidetay/{{
+                                  kullanici.Id
+                                }}"
+                                style="width: 44px;"
+                                ><span style="color: white"
+                                  ><i class="fa fa-search"></i></span
+                              ></a>
+                              <button
+                              class="btn btn-danger btn-xs"
+                              style="width: 44px; margin-left: 6px;"
+                              (click)="Sil(kullanici.Id)"
+                              ><span style="color: white"
+                                ><i class="fa fa-trash"></i></span
+                            ></button>
+                            </td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
