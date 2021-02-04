@@ -39,16 +39,12 @@ export class MahalleEkleComponent implements OnInit {
   }
 
   onIlChanged(){
-    //seçitğim il alıcak
-    //tüm ileçelerdeki il id leri ile karşılaştırıp 
-    //ilçelere atacak
-
     const ilId:number = this.form.controls['IlId'].value;
     this.ilceler = this.tumIlceler.filter((e)=>{
-      // if(e.IlId == ilId)
-      // {
+      // if(e.IlId == ilId){
       //   return true;
-      // }else{
+      // }
+      // else{
       //   return false;
       // }
       return e.IlId == ilId;
