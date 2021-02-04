@@ -23,6 +23,11 @@ export class TasinmazService {
   {
     return this.http.get<Tasinmaz[]>(this.baseURL + "GetAll").pipe(catchError(this.handleError));
   }
+
+  Sil(id:number) 
+  {
+    return this.http.delete(this.baseURL + "Delete/"+ id).pipe(catchError(this.handleError));
+  }
   
   handleError(err: HttpErrorResponse){
     Swal.fire({

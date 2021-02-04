@@ -20,6 +20,7 @@ import { RouterModule } from '@angular/router';
 import { KullaniciListeleComponent } from './Kullanici/kullanici-listele/kullanici-listele.component';
 import { IlceListeleComponent } from './Ilce/ilce-listele/ilce-listele.component';
 import { MahalleListeleComponent } from './Mahalle/mahalle-listele/mahalle-listele.component';
+import { TasinmazListeleComponent } from './Tasinmaz/tasinmaz-listele/tasinmaz-listele.component';
 
 @NgModule({
   declarations: [
@@ -36,6 +37,7 @@ import { MahalleListeleComponent } from './Mahalle/mahalle-listele/mahalle-liste
     KullaniciListeleComponent,
     IlceListeleComponent,
     MahalleListeleComponent,
+    TasinmazListeleComponent,
   ],
   imports: [
     BrowserModule,
