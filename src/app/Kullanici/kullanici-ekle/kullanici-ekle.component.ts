@@ -40,7 +40,7 @@ export class KullaniciEkleComponent implements OnInit {
         if(data) {
           Swal.fire({
             title: 'Başarılı',
-            text: 'Kullanıcı ekleme işlemi başarıyla tamamlandı.',
+            text: 'Kullanıcı ekle işlemi başarıyla tamamlandı.',
             icon: 'success',
             confirmButtonText: 'Tamam',
           });

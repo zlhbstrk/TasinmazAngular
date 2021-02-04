@@ -28,7 +28,7 @@ export class IlEkleComponent implements OnInit {
         if (data) {
           Swal.fire({
             title: 'Başarılı',
-            text: 'İl ekleme işlemi başarıyla tamamlandı.',
+            text: 'İl ekle işlemi başarıyla tamamlandı.',
             icon: 'success',
             confirmButtonText: 'Tamam',
           });

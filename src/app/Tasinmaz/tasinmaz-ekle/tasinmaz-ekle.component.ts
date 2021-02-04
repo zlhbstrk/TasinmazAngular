@@ -20,7 +20,9 @@ export class TasinmazEkleComponent implements OnInit {
   constructor(private ilServis:IlService, private ilceServis:IlceService, private mahalleServis:MahalleService, private tasinmazServis:TasinmazService) { }
 
   iller!:Il[];
+  tumIlceler!:Ilce[];
   ilceler!:Ilce[];
+  tumMahalleler!:Mahalle[];
   mahalleler!:Mahalle[];
   model!:Tasinmaz;
 
@@ -41,8 +43,28 @@ export class TasinmazEkleComponent implements OnInit {
     this.ilceServis.GetirIlce().subscribe((data) => {
       this.ilceler = data;
     }),
+    this.ilceServis.GetirIlce().subscribe((data) => {
+      this.tumIlceler = data;
+    }),
     this.mahalleServis.GetirMahalle().subscribe((data) => {
       this.mahalleler = data;
+    });
+    this.mahalleServis.GetirMahalle().subscribe((data) => {
+      this.tumMahalleler = data;
+    });
+  }
+
+  onIlChanged(){
+    const ilId:number = this.form.controls['IlId'].value;
+    this.ilceler = this.tumIlceler.filter((e)=>{
+      return e.IlId == ilId;
+    });
+  }
+
+  onIlceChanged(){
+    const ilceId:number = this.form.controls['IlceId'].value;
+    this.mahalleler = this.tumMahalleler.filter((e)=>{
+      return e.IlceId == ilceId;
     });
   }
 
@@ -53,7 +75,7 @@ export class TasinmazEkleComponent implements OnInit {
         if(data) {
           Swal.fire({
             title: 'Başarılı',
-            text: 'Taşınmaz başarıyla eklendi.',
+            text: 'Taşınmaz ekle işlemi başarıyla tamamlandı.',
             icon: 'success',
             confirmButtonText: 'Tamam',
           });

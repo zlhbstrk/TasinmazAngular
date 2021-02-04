@@ -58,7 +58,7 @@ export class MahalleEkleComponent implements OnInit {
         if(data) {
           Swal.fire({
             title: 'Başarılı',
-            text: 'Mahalle ekleme işlemi başarıyla tamamlandı.',
+            text: 'Mahalle ekle işlemi başarıyla tamamlandı.',
             icon: 'success',
             confirmButtonText: 'Tamam',
           });
