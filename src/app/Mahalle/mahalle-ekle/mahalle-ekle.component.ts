@@ -1,6 +1,7 @@
 import { LEADING_TRIVIA_CHARS } from '@angular/compiler/src/render3/view/template';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { Il } from 'src/Models/Il';
 import { Ilce } from 'src/Models/Ilce';
 import { Mahalle } from 'src/Models/Mahalle';
@@ -16,7 +17,7 @@ import Swal from 'sweetalert2';
 })
 export class MahalleEkleComponent implements OnInit {
 
-  constructor(private ilServis:IlService, private ilceServis:IlceService, private mahalleServis:MahalleService) { }
+  constructor(private ilServis:IlService, private ilceServis:IlceService, private mahalleServis:MahalleService, private router: Router) { }
 
   iller!:Il[];
   tumIlceler!:Ilce[];
@@ -61,7 +62,10 @@ export class MahalleEkleComponent implements OnInit {
             text: 'Mahalle ekle işlemi başarıyla tamamlandı.',
             icon: 'success',
             confirmButtonText: 'Tamam',
+          }).then(()=>{
+            this.form.reset();
           });
+          this.router.navigate(['/mahallelistele']);
         }
       });
     }

@@ -28,9 +28,7 @@ export class MahalleListeleComponent implements OnInit {
       dom: 'Bfrtip',
       pagingType: 'full_numbers',
       pageLength: 10,
-      buttons: [
-        'excel'
-      ]
+      buttons: [ ],
     };
 
     this.MahalleServis.GetirMahalle().subscribe((data) => {

@@ -14,6 +14,24 @@
               >
                 <div class="row">
                   <div class="col-sm-12">
+
+                    <div class="row">
+                      <div class="col-lg-6 col-md-4 col-sm-4">
+                        <div class="row">
+                          <div class="col-lg-3 col-md-8 col-sm-12">
+                            <a
+                              routerlink="/ilekle"
+                              class="btn btn-outline-primary btn-block"
+                              href="/ilekle"
+                              ><i class="fa fa-plus"></i> &nbsp; İl
+                              Ekle</a
+                            >
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <hr >
+
                     <table
                       datatable
                       [dtOptions]="dtOptions"
@@ -24,7 +42,7 @@
                         <tr>
                           <th>İl Adı</th>
                           <th>Plaka</th>
-                          <th style="width: 95px;" >İşlemler</th>
+                          <th style="width: 95px">İşlemler</th>
                         </tr>
                       </thead>
                       <tbody>
@@ -34,20 +52,20 @@
                           <td>
                             <a
                               class="btn btn-primary btn-xs"
-                              routerLink="/ildetay/{{
-                                il.Id
-                              }}"
-                              style="width: 44px;"
+                              routerLink="/ilduzenle/{{ il.Id }}"
+                              style="width: 44px"
                               ><span style="color: white"
                                 ><i class="fa fa-search"></i></span
                             ></a>
                             <button
-                            class="btn btn-danger btn-xs"
-                            style="width: 44px; margin-left: 6px;"
-                            (click)="Sil(il.Id)"
-                            ><span style="color: white"
-                              ><i class="fa fa-trash"></i></span
-                          ></button>
+                              class="btn btn-danger btn-xs"
+                              style="width: 44px; margin-left: 6px"
+                              (click)="Sil(il.Id)"
+                            >
+                              <span style="color: white"
+                                ><i class="fa fa-trash"></i
+                              ></span>
+                            </button>
                           </td>
                         </tr>
                       </tbody>

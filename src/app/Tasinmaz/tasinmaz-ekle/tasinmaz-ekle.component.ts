@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { Il } from 'src/Models/Il';
 import { Ilce } from 'src/Models/Ilce';
 import { Mahalle } from 'src/Models/Mahalle';
@@ -17,7 +18,7 @@ import Swal from 'sweetalert2';
 })
 export class TasinmazEkleComponent implements OnInit {
 
-  constructor(private ilServis:IlService, private ilceServis:IlceService, private mahalleServis:MahalleService, private tasinmazServis:TasinmazService) { }
+  constructor(private ilServis:IlService, private ilceServis:IlceService, private mahalleServis:MahalleService, private tasinmazServis:TasinmazService, private router: Router) { }
 
   iller!:Il[];
   tumIlceler!:Ilce[];
@@ -78,7 +79,10 @@ export class TasinmazEkleComponent implements OnInit {
             text: 'Taşınmaz ekle işlemi başarıyla tamamlandı.',
             icon: 'success',
             confirmButtonText: 'Tamam',
+          }).then(()=>{
+            this.form.reset();
           });
+          this.router.navigate(['/tasinmazlistele']);
         }
       });
     }

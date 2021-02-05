@@ -22,9 +22,7 @@ export class KullaniciListeleComponent implements OnInit {
       dom: 'Bfrtip',
       pagingType: 'full_numbers',
       pageLength: 10,
-      buttons: [
-        'excel'
-      ]
+      buttons: [ ]
     };
 
     this.KullaniciServis.GetirKullanici().subscribe((data) => {

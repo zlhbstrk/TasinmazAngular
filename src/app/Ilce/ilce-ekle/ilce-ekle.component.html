@@ -12,7 +12,7 @@
         </div>
         <div class="form-group">
           <label>İl</label>
-          <select formControlName="IlId" class="form-control"
+          <select formControlName="IlId" class="custom-select form-control"
           [class]="form.get('IlId')!.invalid ? 'is-invalid' : 'is-valid'">
             <option *ngFor="let il of iller" value="{{il.Id}}">
               {{il.Ad}}
@@ -22,7 +22,7 @@
       </div>
 
       <div class="card-footer">
-        <button type="submit" class="btn btn-primary">KAYDET</button>
+        <button type="submit" class="btn btn-primary" [disabled]="form.invalid">KAYDET</button>
       </div>
     </form>
   </div>

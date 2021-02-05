@@ -25,9 +25,7 @@ export class IlceListeleComponent implements OnInit {
       dom: 'Bfrtip',
       pagingType: 'full_numbers',
       pageLength: 10,
-      buttons: [
-        'excel'
-      ]
+      buttons: [ ]
     };
 
     this.IlceServis.GetirIlce().subscribe((data) => {

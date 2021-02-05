@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { YetkiTipi } from 'src/Helpers/YetkiTipi';
 import { Kullanici } from 'src/Models/Kullanici';
 import { KullaniciService } from 'src/Services/kullanici.service';
@@ -12,7 +13,7 @@ import Swal from 'sweetalert2';
 })
 export class KullaniciEkleComponent implements OnInit {
 
-  constructor(private kullaniciServis:KullaniciService) { }
+  constructor(private kullaniciServis:KullaniciService, private router: Router) { }
 
   yetkiTipi:any[] = [
     {yetkiAd: "Sistem Yöneticisi", yetkiKod:YetkiTipi.sistemYoneticisi},
@@ -43,7 +44,10 @@ export class KullaniciEkleComponent implements OnInit {
             text: 'Kullanıcı ekle işlemi başarıyla tamamlandı.',
             icon: 'success',
             confirmButtonText: 'Tamam',
+          }).then(()=>{
+            this.form.reset();
           });
+          this.router.navigate(['/kullanicilistele']);
         }
       });
     }

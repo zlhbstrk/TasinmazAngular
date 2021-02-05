@@ -1,7 +1,9 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { IlDuzenleComponent } from './Il/il-duzenle/il-duzenle.component';
 import { IlEkleComponent } from './Il/il-ekle/il-ekle.component';
 import { IlListeleComponent } from './Il/il-listele/il-listele.component';
+import { IlceDuzenleComponent } from './Ilce/ilce-duzenle/ilce-duzenle.component';
 import { IlceEkleComponent } from './Ilce/ilce-ekle/ilce-ekle.component';
 import { IlceListeleComponent } from './Ilce/ilce-listele/ilce-listele.component';
 import { KullaniciEkleComponent } from './Kullanici/kullanici-ekle/kullanici-ekle.component';
@@ -23,7 +25,9 @@ const routes: Routes = [
   { path: 'ilcelistele', component: IlceListeleComponent},
   { path: 'mahallelistele', component: MahalleListeleComponent},
   { path: 'tasinmazlistele', component: TasinmazListeleComponent},
-  { path: 'loglistele', component: LogListeleComponent}
+  { path: 'loglistele', component: LogListeleComponent},
+  { path: 'ilduzenle/:id', component: IlDuzenleComponent},
+  { path: 'ilceduzenle/:id', component: IlceDuzenleComponent}
 ];
 
 @NgModule({

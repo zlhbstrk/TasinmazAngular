@@ -29,6 +29,16 @@ export class IlService {
     return this.http.delete(this.baseURL + "Delete/"+ id).pipe(catchError(this.handleError));
   }
 
+  Duzenle(il:Il) : Observable<Il>
+  {
+    return this.http.put<Il>(this.baseURL + "Update",il).pipe(catchError(this.handleError));
+  }
+
+  Getir(id:number) : Observable<Il>
+  {
+    return this.http.get<Il>(this.baseURL + "GetById/" + id).pipe(catchError(this.handleError));
+  }
+
   handleError(err: HttpErrorResponse){
     Swal.fire({
       title: "Hatalı",

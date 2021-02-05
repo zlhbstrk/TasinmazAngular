@@ -12,7 +12,7 @@ import { Router } from '@angular/router';
 })
 export class IlEkleComponent implements OnInit {
 
-  constructor(private ilServis:IlService) {}
+  constructor(private ilServis:IlService, private router: Router) {}
 
   model!:Il;
 
@@ -31,11 +31,13 @@ export class IlEkleComponent implements OnInit {
             text: 'İl ekle işlemi başarıyla tamamlandı.',
             icon: 'success',
             confirmButtonText: 'Tamam',
+          }).then(()=>{
+            this.form.reset();
           });
-          //this.router.navigate(['/ilekle']);
+          this.router.navigate(['/illistele']);
         }
       });
-    }
+    } 
   }
   ngOnInit(): void {}
 }

@@ -1,5 +1,3 @@
-import { YetkiTipi } from "src/Helpers/YetkiTipi";
-
 export class Kullanici {
     Id!:number;
     Email!:string;

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { Il } from 'src/Models/Il';
 import { Ilce } from 'src/Models/Ilce';
 import { IlService } from 'src/Services/il.service';
@@ -13,7 +14,7 @@ import Swal from 'sweetalert2';
 })
 export class IlceEkleComponent implements OnInit {
 
-  constructor(private ilServis:IlService, private ilceServis: IlceService) { }
+  constructor(private ilServis:IlService, private ilceServis: IlceService, private router: Router) { }
 
   iller!:Il[];
   model!:Ilce;
@@ -39,7 +40,10 @@ export class IlceEkleComponent implements OnInit {
             text: 'İlçe ekle işlemi başarıyla tamamlandı.',
             icon: 'success',
             confirmButtonText: 'Tamam',
+          }).then(()=>{
+            this.form.reset();
           });
+          this.router.navigate(['/ilcelistele']);
         }
       });
     }

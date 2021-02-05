@@ -29,6 +29,16 @@ export class IlceService {
     return this.http.delete(this.baseURL + "Delete/"+ id).pipe(catchError(this.handleError));
   }
 
+  Duzenle(ilce:Ilce) : Observable<Ilce>
+  {
+    return this.http.put<Ilce>(this.baseURL + "Update",ilce).pipe(catchError(this.handleError));
+  }
+
+  Getir(id:number) : Observable<Ilce>
+  {
+    return this.http.get<Ilce>(this.baseURL + "GetById/" + id).pipe(catchError(this.handleError));
+  }
+
   handleError(err: HttpErrorResponse)
   {
     Swal.fire({
