@@ -47,12 +47,12 @@
                         <tbody>
                           <tr *ngFor="let mahalle of mahalleler">
                             <td>{{ mahalle.Ad }}</td>
-                            <td>{{ mahalle.IlceId }}</td>
-                            <td>{{ mahalle.IlId }}</td>
+                            <td>{{ mahalle.Ilce.Ad }}</td>
+                            <td>{{ mahalle.Ilce.Il.Ad }}</td>
                             <td>
                               <a
                                 class="btn btn-primary btn-xs"
-                                routerLink="/mahalledetay/{{
+                                routerLink="/mahalleduzenle/{{
                                   mahalle.Id
                                 }}"
                                 style="width: 44px;"

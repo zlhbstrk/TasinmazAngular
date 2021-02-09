@@ -1,7 +1,9 @@
+import { Ilce } from "./Ilce";
+
 export class Mahalle
 {
     Id!:number;
-    IlId!:number;
+    Ilce!:Ilce;
     IlceId!:number;
     Ad!:string;
 }

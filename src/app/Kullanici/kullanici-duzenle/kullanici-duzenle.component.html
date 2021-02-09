@@ -1,1 +1,66 @@
-<p>kullanici-duzenle works!</p>
+<div class="card card-primary">
+  <div class="card-header">
+    <h3 class="card-title">Kullanıcı Düzenle Ekranı</h3>
+  </div>
+
+  <form [formGroup]="form" (ngSubmit)="onSubmit()">
+    <div class="card-body">
+      <div class="form-group">
+        <label>Ad</label>
+        <input
+          type="text"
+          class="form-control"
+          placeholder="Kullanıcı Adı Giriniz."
+          formControlName="Ad"
+        />
+      </div>
+      <div class="form-group">
+        <label>Soyad</label>
+        <input
+          type="text"
+          class="form-control"
+          placeholder="Kullanıcı Soyadı Giriniz."
+          formControlName="Soyad"
+        />
+      </div>
+      <div class="form-group">
+        <label>E-mail</label>
+        <input
+          type="email"
+          class="form-control"
+          placeholder="E-mail Giriniz."
+          formControlName="Email"
+          [class]="form.get('Email')!.invalid ? 'is-invalid' : 'is-valid'"
+        />
+      </div>
+      <div class="form-group">
+        <label>Şifre</label>
+        <input
+          type="text"
+          class="form-control"
+          placeholder="Şifre Giriniz."
+          formControlName="Sifre"
+          [class]="form.get('Sifre')!.invalid ? 'is-invalid' : 'is-valid'"
+        />
+      </div>
+      <div class="form-group">
+        <label>Yetki Tipi</label>
+        <select
+          formControlName="Yetki"
+          class="custom-select form-control"
+          [class]="form.get('Yetki')!.invalid ? 'is-invalid' : 'is-valid'"
+        >
+          <option *ngFor="let yt of yetkiTipi" value="{{yt.yetkiKod}}" >
+            {{ yt.yetkiAd }}
+          </option>
+        </select>
+      </div>
+    </div>
+
+    <div class="card-footer">
+      <button type="submit" class="btn btn-primary" [disabled]="form.invalid">
+        KAYDET
+      </button>
+    </div>
+  </form>
+</div>

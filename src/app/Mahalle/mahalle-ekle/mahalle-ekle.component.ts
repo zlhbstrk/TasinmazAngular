@@ -1,4 +1,3 @@
-import { LEADING_TRIVIA_CHARS } from '@angular/compiler/src/render3/view/template';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
@@ -33,7 +32,7 @@ export class MahalleEkleComponent implements OnInit {
   ngOnInit(): void {
     this.ilServis.GetirIl().subscribe((data) => {
       this.iller = data;
-    }),
+    });
     this.ilceServis.GetirIlce().subscribe((data) => {
       this.tumIlceler = data;
     });

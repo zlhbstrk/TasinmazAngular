@@ -11,7 +11,6 @@ import Swal from 'sweetalert2';
 export class IlceService {
 
   constructor(private http:HttpClient) { }
-
   readonly baseURL = 'https://localhost:5001/api/Ilce/'
 
   Ekle(ilce:Ilce) : Observable<Ilce>

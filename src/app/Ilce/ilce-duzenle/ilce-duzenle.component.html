@@ -1,6 +1,6 @@
 <div class="card card-primary">
   <div class="card-header">
-    <h3 class="card-title">İlçe Ekle Ekranı</h3>
+    <h3 class="card-title">İlçe Düzenle Ekranı</h3>
   </div>
 
   <form [formGroup]="form" (ngSubmit)="onSubmit()">
@@ -22,9 +22,9 @@
           class="custom-select form-control"
           [class]="form.get('IlId')!.invalid ? 'is-invalid' : 'is-valid'"
         >
-          <!-- <option value="{{ ilce.Ad }}">
-            {{ ilce.Ad }}
-          </option> -->
+          <option *ngFor="let il of iller" value="{{ il.Id }}">
+            {{ il.Ad }}
+          </option>
         </select>
       </div>
     </div>

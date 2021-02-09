@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { DataTablesModule } from 'angular-datatables';
 import { Subject } from 'rxjs';
 import { Kullanici } from 'src/Models/Kullanici';
 import { KullaniciService } from 'src/Services/kullanici.service';
@@ -15,6 +16,8 @@ export class KullaniciListeleComponent implements OnInit {
 
   dtOptions = {};
   kullanicilar: Kullanici[] = [];
+  model!:Kullanici;
+  
   dtTrigger: Subject<Kullanici> = new Subject<Kullanici>();
 
   ngOnInit(): void {

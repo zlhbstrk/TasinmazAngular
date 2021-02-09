@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
+import { Il } from 'src/Models/Il';
 import { Ilce } from 'src/Models/Ilce';
+import { IlService } from 'src/Services/il.service';
 import { IlceService } from 'src/Services/ilce.service';
 import Swal from 'sweetalert2';
 
@@ -12,10 +14,12 @@ import Swal from 'sweetalert2';
 })
 export class IlceDuzenleComponent implements OnInit {
 
-  constructor(private ilceServis:IlceService, private activatedRoute: ActivatedRoute) { }
-
+  constructor(private ilceServis:IlceService, private ilServis:IlService, private activatedRoute: ActivatedRoute, private router: Router) { }
+  
+  iller!:Il[];
   model!:Ilce;
-  id!:number; 
+  id!:number;
+
   form = new FormGroup({
     Ad: new FormControl(null, [Validators.required]),
     IlId: new FormControl(null, [Validators.required])
@@ -36,13 +40,19 @@ export class IlceDuzenleComponent implements OnInit {
           }).then(()=>{
             this.form.reset();
           });
+          this.router.navigate(['/ilcelistele']);
         }
       });
     }
   }
+  
   ngOnInit(): void {
     this.activatedRoute.params.subscribe((e)=>{
       this.id = e.id;
+    });
+
+    this.ilServis.GetirIl().subscribe((data) => {
+      this.iller = data;
     });
 
     this.ilceServis.Getir(this.id).subscribe((data)=>{

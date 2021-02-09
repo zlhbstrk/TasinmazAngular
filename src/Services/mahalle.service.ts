@@ -28,6 +28,16 @@ export class MahalleService {
     return this.http.delete(this.baseURL + "Delete/"+ id).pipe(catchError(this.handleError));
   }
 
+  Duzenle(mahalle:Mahalle) : Observable<Mahalle>
+  {
+    return this.http.put<Mahalle>(this.baseURL + "Update",mahalle).pipe(catchError(this.handleError));
+  }
+
+  Getir(id:number) : Observable<Mahalle>
+  {
+    return this.http.get<Mahalle>(this.baseURL + "GetById/" + id).pipe(catchError(this.handleError));
+  }
+
   handleError(err: HttpErrorResponse)
   {
     Swal.fire({

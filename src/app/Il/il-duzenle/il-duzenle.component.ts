@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Il } from 'src/Models/Il';
 import { IlService } from 'src/Services/il.service';
 import Swal from 'sweetalert2';
@@ -12,7 +12,7 @@ import Swal from 'sweetalert2';
 })
 export class IlDuzenleComponent implements OnInit {
 
-  constructor(private ilServis:IlService, private activatedRoute: ActivatedRoute) { }
+  constructor(private ilServis:IlService, private activatedRoute: ActivatedRoute, private router: Router) { }
 
   model!:Il;
   id!:number; 
@@ -37,7 +37,7 @@ export class IlDuzenleComponent implements OnInit {
           }).then(()=>{
             this.form.reset();
           });
-          //this.router.navigate(['/ilekle']);
+          this.router.navigate(['/illistele']);
         }
       });
     }

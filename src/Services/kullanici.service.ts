@@ -28,6 +28,16 @@ export class KullaniciService {
   {
     return this.http.delete(this.baseURL + "Delete/"+ id).pipe(catchError(this.handleError));
   }
+
+  Duzenle(kullanici:Kullanici) : Observable<Kullanici>
+  {
+    return this.http.put<Kullanici>(this.baseURL + "Update", kullanici).pipe(catchError(this.handleError));
+  }
+
+  Getir(id:number) : Observable<Kullanici>
+  {
+    return this.http.get<Kullanici>(this.baseURL + "GetById/" + id).pipe(catchError(this.handleError));
+  }
   
   handleError(err: HttpErrorResponse){
     Swal.fire({
