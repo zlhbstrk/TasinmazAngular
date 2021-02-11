@@ -13,6 +13,7 @@ import { LogListeleComponent } from './Log/log-listele/log-listele.component';
 import { MahalleDuzenleComponent } from './Mahalle/mahalle-duzenle/mahalle-duzenle.component';
 import { MahalleEkleComponent } from './Mahalle/mahalle-ekle/mahalle-ekle.component';
 import { MahalleListeleComponent } from './Mahalle/mahalle-listele/mahalle-listele.component';
+import { TasinmazDuzenleComponent } from './Tasinmaz/tasinmaz-duzenle/tasinmaz-duzenle.component';
 import { TasinmazEkleComponent } from './Tasinmaz/tasinmaz-ekle/tasinmaz-ekle.component';
 import { TasinmazListeleComponent } from './Tasinmaz/tasinmaz-listele/tasinmaz-listele.component';
 
@@ -31,7 +32,8 @@ const routes: Routes = [
   { path: 'ilduzenle/:id', component: IlDuzenleComponent},
   { path: 'ilceduzenle/:id', component: IlceDuzenleComponent},
   { path: 'kullaniciduzenle/:id', component: KullaniciDuzenleComponent},
-  { path: 'mahalleduzenle/:id', component: MahalleDuzenleComponent}
+  { path: 'mahalleduzenle/:id', component: MahalleDuzenleComponent},
+  { path: 'tasinmazduzenle/:id', component: TasinmazDuzenleComponent}
 ];
 
 @NgModule({

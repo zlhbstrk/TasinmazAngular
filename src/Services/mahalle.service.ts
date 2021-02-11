@@ -1,7 +1,7 @@
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, throwError } from 'rxjs';
-import { catchError } from 'rxjs/operators';
+import { catchError, take } from 'rxjs/operators';
 import { Mahalle } from 'src/Models/Mahalle';
 import Swal from 'sweetalert2';
 
@@ -18,11 +18,15 @@ export class MahalleService {
     return this.http.post<Mahalle>(this.baseURL + 'Add',mahalle).pipe(catchError(this.handleError));
   }
 
-  GetirMahalle() : Observable<Mahalle[]>
+  GetirMahalle(skipDeger:number, takeDeger:number) : Observable<Mahalle[]>
   {
-    return this.http.get<Mahalle[]>(this.baseURL + "GetAll").pipe(catchError(this.handleError));
+    return this.http.get<Mahalle[]>(this.baseURL + "GetAll/" + skipDeger + "/" + takeDeger).pipe(catchError(this.handleError));
   }
-
+  
+  FullGetirMahalle() : Observable<Mahalle[]>
+  {
+    return this.http.get<Mahalle[]>(this.baseURL + "FullGetAll").pipe(catchError(this.handleError));
+  }
   Sil(id:number) 
   {
     return this.http.delete(this.baseURL + "Delete/"+ id).pipe(catchError(this.handleError));
@@ -36,6 +40,11 @@ export class MahalleService {
   Getir(id:number) : Observable<Mahalle>
   {
     return this.http.get<Mahalle>(this.baseURL + "GetById/" + id).pipe(catchError(this.handleError));
+  }
+
+  Count() : Observable<number>
+  {
+    return this.http.get<number>(this.baseURL + "GetCount").pipe(catchError(this.handleError));
   }
 
   handleError(err: HttpErrorResponse)

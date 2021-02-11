@@ -16,25 +16,39 @@ export class LogListeleComponent implements OnInit {
 
   dtOptions = {};
   loglar: Log[] = [];
-  kullanicilar: Kullanici[] = [];
+  countDizi:number[] = [];
+  kayitSayi:number = 10;
   dtTrigger: Subject<Log> = new Subject<Log>();
 
   ngOnInit(): void {
     this.dtOptions = {
-      dom: 'Bfrtip',
+      dom: 'Bfrti',
       pagingType: 'full_numbers',
-      pageLength: 10,
       buttons: [
         'excel'
       ]
     };
 
-    this.logServis.GetirLog().subscribe((data) => {
+    this.logServis.GetirLog(0, this.kayitSayi).subscribe((data) => {
       this.loglar = data;
       this.dtTrigger.next();
     });
-    this.kullaniciServis.GetirKullanici().subscribe((data) => {
-      this.kullanicilar = data;
+
+    this.logServis.Count().subscribe((count) => {
+      this.countDiziDoldur(count);
+    })
+  }
+
+  countDiziDoldur(count:number){
+    const buttonCount = Math.ceil(count/this.kayitSayi);
+    for(let i=0;i<buttonCount;i++){
+      this.countDizi.push(i);
+    }
+  }
+
+  sayfaGetir(skipDeger:number, takeDeger:number){
+    this.logServis.GetirLog(skipDeger, takeDeger).subscribe((data) => {
+      this.loglar = data
     });
   }
 }

@@ -51,7 +51,7 @@ export class IlceDuzenleComponent implements OnInit {
       this.id = e.id;
     });
 
-    this.ilServis.GetirIl().subscribe((data) => {
+    this.ilServis.FullGetirIl().subscribe((data) => {
       this.iller = data;
     });
 

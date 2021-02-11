@@ -85,8 +85,25 @@
         ></textarea>
       </div>
     </div>
+    
     <div class="card-footer">
-      <button type="submit" class="btn btn-primary" [disabled]="form.invalid">KAYDET</button>
+      <div class="row">
+        <div class="col-md-6">
+          <button
+            type="submit"
+            class="btn btn-primary"
+            [disabled]="form.invalid"
+          ><i class="fas fa-save"></i> &nbsp; KAYDET
+          </button>
+          <button
+            type="reset"
+            class="btn btn-default"
+            style="margin-left: 16px"
+          >
+            <i class="fas fa-trash-alt"></i> &nbsp; Temizle
+          </button>
+        </div>
+      </div>
     </div>
   </form>
 </div>

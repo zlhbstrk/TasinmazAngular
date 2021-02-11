@@ -37,22 +37,20 @@ export class MahalleDuzenleComponent implements OnInit {
       this.id = e.id;
     });
 
-    this.ilServis.GetirIl().subscribe((data) => {
+    this.ilServis.FullGetirIl().subscribe((data) => {
       this.iller = data;
     });
 
-    this.ilceServis.GetirIlce().subscribe((data) => {
-      this.ilceler = data;
-    });
-
-    this.ilceServis.GetirIlce().subscribe((data) => {
+    this.ilceServis.FullGetirIlce().subscribe((data) => {
       this.tumIlceler = data;
     });
   
     this.mahalleServis.Getir(this.id).subscribe((data)=>{
       this.form.controls['Ad'].setValue(data.Ad)
-      this.form.controls['IlceId'].setValue(data.IlceId)
       this.form.controls['IlId'].setValue(data.Ilce.IlId)
+      this.onIlChanged();
+      this.form.controls['IlceId'].setValue(data.IlceId)
+      // console.log(JSON.stringify(data.Ilce));
     });
   }
   

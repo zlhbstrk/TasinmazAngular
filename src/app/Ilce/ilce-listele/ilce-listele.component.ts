@@ -18,22 +18,40 @@ export class IlceListeleComponent implements OnInit {
   dtOptions = {};
   ilceler: Ilce[] = [];
   iller: Il[] = [];
+  countDizi:number[] = [];
+  kayitSayi:number = 10;
   dtTrigger: Subject<Ilce> = new Subject<Ilce>();
 
   ngOnInit(): void {
     this.dtOptions = {
-      dom: 'Bfrtip',
+      dom: 'Bfrti',
       pagingType: 'full_numbers',
-      pageLength: 10,
       buttons: [ ]
     };
 
-    this.IlceServis.GetirIlce().subscribe((data) => {
+    this.IlceServis.GetirIlce(0,this.kayitSayi).subscribe((data) => {
       this.ilceler = data;
       this.dtTrigger.next();
     });
-    this.IlServis.GetirIl().subscribe((data) => {
+    this.IlServis.FullGetirIl().subscribe((data) => {
       this.iller = data;
+    });
+    
+    this.IlceServis.Count().subscribe((count) => {
+      this.countDiziDoldur(count);
+    })
+  }
+
+  countDiziDoldur(count:number){
+    const buttonCount = Math.ceil(count/this.kayitSayi);
+    for(let i=0;i<buttonCount;i++){
+      this.countDizi.push(i);
+    }
+  }
+
+  sayfaGetir(skipDeger:number, takeDeger:number){
+    this.IlceServis.GetirIlce(skipDeger, takeDeger).subscribe((data) => {
+      this.ilceler = data
     });
   }
 
@@ -55,7 +73,7 @@ export class IlceListeleComponent implements OnInit {
               'Silme işlemi başarıyla tamamlandı.',
               'success'
             ).then(() => {
-              this.IlceServis.GetirIlce().subscribe((data) => {
+              this.IlceServis.GetirIlce(0, this.kayitSayi).subscribe((data) => {
                 this.ilceler = data;
               });
             });

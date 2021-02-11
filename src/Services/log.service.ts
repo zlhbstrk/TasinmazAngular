@@ -14,9 +14,14 @@ export class LogService {
 
   readonly baseURL = 'https://localhost:5001/api/Log/'
 
-  GetirLog() :Observable<Log[]>
+  GetirLog(skipDeger:number, takeDeger:number) :Observable<Log[]>
   {
-    return this.http.get<Log[]>(this.baseURL + "GetAll").pipe(catchError(this.handleError));
+    return this.http.get<Log[]>(this.baseURL + "GetAll/" + skipDeger + "/" + takeDeger).pipe(catchError(this.handleError));
+  }
+
+  Count() : Observable<number>
+  {
+    return this.http.get<number>(this.baseURL + "GetCount").pipe(catchError(this.handleError));
   }
 
   handleError(err: HttpErrorResponse){

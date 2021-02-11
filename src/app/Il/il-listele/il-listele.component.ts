@@ -15,19 +15,37 @@ export class IlListeleComponent implements OnInit {
   
   dtOptions = {};
   iller: Il[] = [];
+  countDizi:number[] = [];
+  kayitSayi:number = 10;
   dtTrigger: Subject<Il> = new Subject<Il>();
 
   ngOnInit(): void {
     this.dtOptions = {
-      dom: 'Bfrtip',
+      dom: 'Bfrti',
       pagingType: 'full_numbers',
-      pageLength: 10,
       buttons: [ ]
     };
 
-    this.IlServis.GetirIl().subscribe((data) => {
+    this.IlServis.GetirIl(0, this.kayitSayi).subscribe((data) => {
       this.iller = data;
-      this.dtTrigger.next();
+      this.dtTrigger.next();    
+    });
+
+    this.IlServis.Count().subscribe((count) => {
+      this.countDiziDoldur(count);
+    })
+  }
+
+  countDiziDoldur(count:number){
+    const buttonCount = Math.ceil(count/this.kayitSayi);
+    for(let i=0;i<buttonCount;i++){
+      this.countDizi.push(i);
+    }
+  }
+
+  sayfaGetir(skipDeger:number, takeDeger:number){
+    this.IlServis.GetirIl(skipDeger, takeDeger).subscribe((data) => {
+      this.iller = data
     });
   }
 
@@ -49,7 +67,8 @@ export class IlListeleComponent implements OnInit {
               'Silme işlemi başarıyla tamamlandı.',
               'success'
             ).then(() => {
-              this.IlServis.GetirIl().subscribe((data) => {
+              this.dtOptions
+              this.IlServis.GetirIl(0, this.kayitSayi).subscribe((data) => {
                 this.iller = data;
               });
              // this.router.navigate(['/illistele']);

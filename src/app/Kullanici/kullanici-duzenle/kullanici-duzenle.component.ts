@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { YetkiTipi } from 'src/Helpers/YetkiTipi';
 import { Kullanici } from 'src/Models/Kullanici';
 import { KullaniciService } from 'src/Services/kullanici.service';
@@ -13,7 +13,7 @@ import Swal from 'sweetalert2';
 })
 export class KullaniciDuzenleComponent implements OnInit {
 
-  constructor(private kullaniciServis: KullaniciService, private activatedRoute: ActivatedRoute) { }
+  constructor(private kullaniciServis: KullaniciService, private activatedRoute: ActivatedRoute, private router: Router) { }
 
   yetkiTipi:any[] = [
     {yetkiAd: "Sistem Yöneticisi", yetkiKod:YetkiTipi.sistemYoneticisi},
@@ -44,6 +44,7 @@ export class KullaniciDuzenleComponent implements OnInit {
           }).then(()=>{
             this.form.reset();
           });
+          this.router.navigate(['/kullanicilistele']);
         }
       });
     }

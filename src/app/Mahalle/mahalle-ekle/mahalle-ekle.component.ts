@@ -30,10 +30,10 @@ export class MahalleEkleComponent implements OnInit {
   });
 
   ngOnInit(): void {
-    this.ilServis.GetirIl().subscribe((data) => {
+    this.ilServis.FullGetirIl().subscribe((data) => {
       this.iller = data;
     });
-    this.ilceServis.GetirIlce().subscribe((data) => {
+    this.ilceServis.FullGetirIlce().subscribe((data) => {
       this.tumIlceler = data;
     });
   }

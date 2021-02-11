@@ -25,7 +25,7 @@ export class IlceEkleComponent implements OnInit {
   });
 
   ngOnInit(): void {
-   this.ilServis.GetirIl().subscribe((data) => {
+   this.ilServis.FullGetirIl().subscribe((data) => {
       this.iller = data;
     });
   }

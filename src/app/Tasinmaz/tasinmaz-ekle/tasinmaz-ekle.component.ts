@@ -38,19 +38,19 @@ export class TasinmazEkleComponent implements OnInit {
   });
   
   ngOnInit(): void {
-    this.ilServis.GetirIl().subscribe((data) => {
+    this.ilServis.FullGetirIl().subscribe((data) => {
       this.iller = data;
     }),
-    this.ilceServis.GetirIlce().subscribe((data) => {
-      this.ilceler = data;
-    }),
-    this.ilceServis.GetirIlce().subscribe((data) => {
+    // this.ilceServis.FullGetirIlce().subscribe((data) => {
+    //   this.ilceler = data;
+    // }),
+    this.ilceServis.FullGetirIlce().subscribe((data) => {
       this.tumIlceler = data;
     }),
-    this.mahalleServis.GetirMahalle().subscribe((data) => {
-      this.mahalleler = data;
-    });
-    this.mahalleServis.GetirMahalle().subscribe((data) => {
+    // this.mahalleServis.FullGetirMahalle().subscribe((data) => {
+    //   this.mahalleler = data;
+    // });
+    this.mahalleServis.FullGetirMahalle().subscribe((data) => {
       this.tumMahalleler = data;
     });
   }

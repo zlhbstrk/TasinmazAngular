@@ -1,6 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { Subject } from 'rxjs';
+import { Il } from 'src/Models/Il';
+import { Ilce } from 'src/Models/Ilce';
+import { Mahalle } from 'src/Models/Mahalle';
 import { Tasinmaz } from 'src/Models/Tasinmaz';
+import { IlService } from 'src/Services/il.service';
+import { IlceService } from 'src/Services/ilce.service';
+import { MahalleService } from 'src/Services/mahalle.service';
 import { TasinmazService } from 'src/Services/tasinmaz.service';
 import Swal from 'sweetalert2';
 
@@ -11,25 +17,54 @@ import Swal from 'sweetalert2';
 })
 export class TasinmazListeleComponent implements OnInit {
 
-  constructor(private tasinmazSevis: TasinmazService) { }
+  constructor(private tasinmazSevis: TasinmazService, private MahalleServis:MahalleService, private IlceServis:IlceService, private IlServis:IlService) { }
 
   dtOptions = {};
   tasinmazlar: Tasinmaz[] = [];
+  mahalleler: Mahalle[] = [];
+  ilceler: Ilce[] = [];
+  iller: Il[] = [];
+  countDizi:number[] = [];
+  kayitSayi:number = 10;
   dtTrigger: Subject<Tasinmaz> = new Subject<Tasinmaz>();
 
   ngOnInit(): void {
     this.dtOptions = {
-      dom: 'Bfrtip',
+      dom: 'Bfrti',
       pagingType: 'full_numbers',
-      pageLength: 10,
       buttons: [
         'excel'
       ]
     };
 
-    this.tasinmazSevis.GetirTasinmaz().subscribe((data) => {
+    this.tasinmazSevis.GetirTasinmaz(0, this.kayitSayi).subscribe((data) => {
       this.tasinmazlar = data;
       this.dtTrigger.next();
+    });
+    this.MahalleServis.FullGetirMahalle().subscribe((data) => {
+      this.mahalleler = data;
+    });
+    this.IlceServis.FullGetirIlce().subscribe((data) => {
+      this.ilceler = data;
+    });
+    this.IlServis.FullGetirIl().subscribe((data) => {
+      this.iller = data;
+    });
+    this.tasinmazSevis.Count().subscribe((count) => {
+      this.countDiziDoldur(count);
+    })
+  }
+
+  countDiziDoldur(count:number){
+    const buttonCount = Math.ceil(count/this.kayitSayi);
+    for(let i=0;i<buttonCount;i++){
+      this.countDizi.push(i);
+    }
+  }
+
+  sayfaGetir(skipDeger:number, takeDeger:number){
+    this.tasinmazSevis.GetirTasinmaz(skipDeger, takeDeger).subscribe((data) => {
+      this.tasinmazlar = data
     });
   }
 
@@ -51,7 +86,7 @@ export class TasinmazListeleComponent implements OnInit {
               'Silme işlemi başarıyla tamamlandı.',
               'success'
             ).then(() => {
-              this.tasinmazSevis.GetirTasinmaz().subscribe((data) => {
+              this.tasinmazSevis.GetirTasinmaz(0, this.kayitSayi).subscribe((data) => {
                 this.tasinmazlar = data;
               });
             });

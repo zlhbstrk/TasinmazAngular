@@ -19,24 +19,34 @@ export class IlService {
    return this.http.post<Il>(this.baseURL + 'Add',il).pipe(catchError(this.handleError));
   }
 
-  GetirIl() :Observable<Il[]>
+  GetirIl(skipDeger:number, takeDeger:number) :Observable<Il[]>
   {
-    return this.http.get<Il[]>(this.baseURL + "GetAll").pipe(catchError(this.handleError));
+    return this.http.get<Il[]>(this.baseURL + "GetAll/" + skipDeger + "/" + takeDeger).pipe(catchError(this.handleError));
+  }
+
+  FullGetirIl() :Observable<Il[]>
+  {
+    return this.http.get<Il[]>(this.baseURL + "FullGetAll").pipe(catchError(this.handleError));
   }
 
   Sil(id:number) 
   {
-    return this.http.delete(this.baseURL + "Delete/"+ id).pipe(catchError(this.handleError));
+    return this.http.delete(this.baseURL + "Delete/" + id).pipe(catchError(this.handleError));
   }
 
   Duzenle(il:Il) : Observable<Il>
   {
-    return this.http.put<Il>(this.baseURL + "Update",il).pipe(catchError(this.handleError));
+    return this.http.put<Il>(this.baseURL + "Update", il).pipe(catchError(this.handleError));
   }
 
   Getir(id:number) : Observable<Il>
   {
     return this.http.get<Il>(this.baseURL + "GetById/" + id).pipe(catchError(this.handleError));
+  }
+
+  Count() : Observable<number>
+  {
+    return this.http.get<number>(this.baseURL + "GetCount").pipe(catchError(this.handleError));
   }
 
   handleError(err: HttpErrorResponse){
