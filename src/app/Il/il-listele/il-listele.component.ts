@@ -14,14 +14,16 @@ export class IlListeleComponent implements OnInit {
   constructor(private IlServis: IlService) { }
   
   dtOptions = {};
-  iller: Il[] = [];
-  countDizi:number[] = [];
-  kayitSayi:number = 10;
   dtTrigger: Subject<Il> = new Subject<Il>();
+
+  iller: Il[] = [];
+  kayitSayi:number = 10;
+  sayfa:number = 1;
+  pageCount:number = 1;
 
   ngOnInit(): void {
     this.dtOptions = {
-      dom: 'Bfrti',
+      dom: 'Bfrt',
       pagingType: 'full_numbers',
       buttons: [ ]
     };
@@ -32,18 +34,14 @@ export class IlListeleComponent implements OnInit {
     });
 
     this.IlServis.Count().subscribe((count) => {
-      this.countDiziDoldur(count);
+      this.pageCount = count;
     })
   }
 
-  countDiziDoldur(count:number){
-    const buttonCount = Math.ceil(count/this.kayitSayi);
-    for(let i=0;i<buttonCount;i++){
-      this.countDizi.push(i);
-    }
-  }
-
-  sayfaGetir(skipDeger:number, takeDeger:number){
+  sayfaGetir(skipDeger:number, takeDeger:number|any, event?:number){
+    this.sayfa = event ? event: 1;
+    this.kayitSayi = takeDeger;
+    
     this.IlServis.GetirIl(skipDeger, takeDeger).subscribe((data) => {
       this.iller = data
     });
@@ -67,11 +65,9 @@ export class IlListeleComponent implements OnInit {
               'Silme işlemi başarıyla tamamlandı.',
               'success'
             ).then(() => {
-              this.dtOptions
               this.IlServis.GetirIl(0, this.kayitSayi).subscribe((data) => {
                 this.iller = data;
               });
-             // this.router.navigate(['/illistele']);
             });
         });
       }

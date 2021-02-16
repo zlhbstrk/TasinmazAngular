@@ -20,7 +20,7 @@ export class IlceEkleComponent implements OnInit {
   model!:Ilce;
 
   form = new FormGroup({
-    Ad: new FormControl(null, [Validators.required]),
+    Ad: new FormControl(null, [Validators.required, Validators.maxLength(30)]),
     IlId: new FormControl(null, [Validators.required])
   });
 

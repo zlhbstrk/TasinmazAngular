@@ -32,10 +32,10 @@ export class TasinmazDuzenleComponent implements OnInit {
     IlId: new FormControl(null, [Validators.required]),
     IlceId: new FormControl(null, [Validators.required]),
     MahalleId: new FormControl(null, [Validators.required]),
-    Ada: new FormControl(null, [Validators.required]),
-    Parsel: new FormControl(null, [Validators.required]),
-    Nitelik: new FormControl(null, [Validators.required]),
-    Adres: new FormControl(null, [Validators.required])
+    Ada: new FormControl(null, [Validators.required, Validators.maxLength(10)]),
+    Parsel: new FormControl(null, [Validators.required, Validators.maxLength(10)]),
+    Nitelik: new FormControl(null, [Validators.required, Validators.maxLength(50)]),
+    Adres: new FormControl(null, [Validators.required, Validators.maxLength(100)])
   });
   
   ngOnInit(): void {
@@ -45,21 +45,17 @@ export class TasinmazDuzenleComponent implements OnInit {
     this.ilServis.FullGetirIl().subscribe((data) => {
       this.iller = data;
     });
-    // this.ilceServis.FullGetirIlce().subscribe((data) => {
-    //   this.ilceler = data;
-    // });
     this.ilceServis.FullGetirIlce().subscribe((data) => {
       this.tumIlceler = data;
     });
-    // this.mahalleServis.FullGetirMahalle().subscribe((data) => {
-    //   this.mahalleler = data;
-    // });
     this.mahalleServis.FullGetirMahalle().subscribe((data) => {
       this.tumMahalleler = data;
     });
     this.tasinmazServis.Getir(this.id).subscribe((data)=>{
-      this.form.controls['IlId'].setValue(data.Mahalle.Ilce.IlId)
-      this.form.controls['IlceId'].setValue(data.Mahalle.IlceId)
+      this.form.controls['IlId'].setValue(data.IlId)
+      this.onIlChanged()
+      this.form.controls['IlceId'].setValue(data.IlceId)
+      this.onIlceChanged()
       this.form.controls['MahalleId'].setValue(data.MahalleId)
       this.form.controls['Ada'].setValue(data.Ada)
       this.form.controls['Parsel'].setValue(data.Parsel)

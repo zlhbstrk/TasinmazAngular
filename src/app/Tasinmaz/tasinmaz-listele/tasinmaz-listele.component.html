@@ -45,7 +45,14 @@
                           </tr>
                         </thead>
                         <tbody>
-                          <tr *ngFor="let tasinmaz of tasinmazlar">
+                          <tr *ngFor="let tasinmaz of tasinmazlar 
+                          | paginate
+                                : {
+                                    id: 'listing_pagination',
+                                    itemsPerPage: kayitSayi,
+                                    currentPage: sayfa,
+                                    totalItems: pageCount
+                                  }">
                             <td>{{ tasinmaz.Mahalle.Ilce.Il.Ad }}</td>
                             <td>{{ tasinmaz.Mahalle.Ilce.Ad }}</td>
                             <td>{{ tasinmaz.Mahalle.Ad }}</td>
@@ -74,6 +81,38 @@
                           </tr>
                         </tbody>
                       </table>
+                      <br />
+                      <div class="row">
+                        <div class="col-md-6">
+                          <div class="col-lg-2 col-md-2 col-sm-2">
+                            <div class="form-group">
+                              <select
+                                #t
+                                (change)="sayfaGetir(0, t.value)"
+                                class="custom-select form-control"
+                                [value]="10"
+                              >
+                                <option [value]="5">5</option>
+                                <option [value]="10">10</option>
+                                <option [value]="25">25</option>
+                                <option [value]="50">50</option>
+                                <option [value]="100">100</option>
+                              </select>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col-md-6">
+                          <div class="col-lg-12 col-md-12 col-sm-12">
+                            <pagination-controls
+                              id="listing_pagination"
+                              directionLinks:1
+                              (pageChange)="
+                                sayfaGetir($event * kayitSayi, kayitSayi, $event)
+                              "
+                            ></pagination-controls>
+                          </div>
+                        </div>
+                      </div>
                     </div>
                   </div>
                 </div>

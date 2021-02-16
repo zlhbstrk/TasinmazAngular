@@ -22,10 +22,10 @@ export class KullaniciDuzenleComponent implements OnInit {
   model!:Kullanici;
   id!:number; 
   form = new FormGroup({
-    Ad: new FormControl(null),
-    Soyad: new FormControl(null),
-    Email: new FormControl(null, [Validators.required,Validators.pattern("^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$")]),
-    Sifre: new FormControl(null, [Validators.required,Validators.minLength(8)]),
+    Ad: new FormControl(null, [Validators.maxLength(30)]),
+    Soyad: new FormControl(null, [Validators.maxLength(30)]),
+    Email: new FormControl(null, [Validators.required, Validators.pattern("^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$"), Validators.maxLength(50)]),
+    Sifre: new FormControl(null, [Validators.required, Validators.minLength(8)]),
     Yetki: new FormControl(null, [Validators.required])
   });
 

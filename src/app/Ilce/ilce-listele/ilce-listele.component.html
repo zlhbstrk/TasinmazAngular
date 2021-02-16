@@ -20,8 +20,7 @@
                                 routerlink="/ilceekle"
                                 class="btn btn-outline-primary btn-block"
                                 href="/ilceekle"
-                                ><i class="fa fa-plus"></i> &nbsp; İlçe
-                                Ekle</a
+                                ><i class="fa fa-plus"></i> &nbsp; İlçe Ekle</a
                               >
                         </div>
                       </div>
@@ -40,7 +39,14 @@
                           </tr>
                         </thead>
                         <tbody>
-                          <tr *ngFor="let ilce of ilceler">
+                          <tr *ngFor="let ilce of ilceler
+                          | paginate
+                                : {
+                                    id: 'listing_pagination',
+                                    itemsPerPage: kayitSayi,
+                                    currentPage: sayfa,
+                                    totalItems: pageCount - kayitSayi
+                                  }">
                             <td>{{ ilce.Ad }}</td>
                             <td>{{ ilce.Il.Ad }}</td>
                             <td>
@@ -56,14 +62,46 @@
                               style="width: 44px; margin-left: 6px;"
                               (click)="Sil(ilce.Id)"
                               ><span style="color: white"
-                                ><i class="fa fa-trash"></i></span
+                                ><i class="fa fa-trash"></i
+                              ></span
                             ></button>
                             </td>
                           </tr>
                         </tbody>
                       </table>
-                      <div class="col-lg-1 col-md-1 col-sm-1">
-                        <button class="form-control" (click)="sayfaGetir(i*kayitSayi,kayitSayi)" *ngFor="let i of countDizi" >{{i+1}}</button>
+                      <br />
+                      <div class="row">
+                        <div class="col-md-6">
+                          <div class="col-lg-2 col-md-2 col-sm-2">
+                            <div class="form-group">
+                              <select
+                                #t
+                                (change)="sayfaGetir(0, t.value)"
+                                class="custom-select form-control"
+                                [value]="10"
+                              >
+                                <option [value]="5">5</option>
+                                <option [value]="10">10</option>
+                                <option [value]="25">25</option>
+                                <option [value]="50">50</option>
+                                <option [value]="100">100</option>
+                              </select>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col-md-6">
+                          <div class="col-lg-12 col-md-12 col-sm-12">
+                            <!-- <mat-paginator [length]="loglar.length" [pageSize]:400 [pageSizeOptions]="[5, 10, 25, 5, 100]" (page)="pageEvent = $event"></mat-paginator> -->
+                            <pagination-controls
+                              id="listing_pagination"
+                              directionLinks:1
+                              (pageChange)="
+                                sayfaGetir($event * kayitSayi, kayitSayi, $event)
+                              "
+                            ></pagination-controls>
+                            <!-- <pagination-controls previousLabel="Prev" nextLabel="Next" responsive:1></pagination-controls> -->
+                          </div>
+                        </div>
                       </div>
                     </div>
                   </div>

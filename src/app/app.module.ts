@@ -27,6 +27,11 @@ import { IlceDuzenleComponent } from './Ilce/ilce-duzenle/ilce-duzenle.component
 import { KullaniciDuzenleComponent } from './Kullanici/kullanici-duzenle/kullanici-duzenle.component';
 import { MahalleDuzenleComponent } from './Mahalle/mahalle-duzenle/mahalle-duzenle.component';
 import { TasinmazDuzenleComponent } from './Tasinmaz/tasinmaz-duzenle/tasinmaz-duzenle.component';
+import { LoginComponent } from './Login/login/login.component';
+import { KullaniciService } from 'src/Services/kullanici.service';
+import { LoginGuard } from './Login/login/login.guard';
+import { NgxPaginationModule } from 'ngx-pagination';
+import { MatPaginatorModule } from '@angular/material/paginator';
 
 @NgModule({
   declarations: [
@@ -50,6 +55,7 @@ import { TasinmazDuzenleComponent } from './Tasinmaz/tasinmaz-duzenle/tasinmaz-d
     KullaniciDuzenleComponent,
     MahalleDuzenleComponent,
     TasinmazDuzenleComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
@@ -58,9 +64,11 @@ import { TasinmazDuzenleComponent } from './Tasinmaz/tasinmaz-duzenle/tasinmaz-d
     SweetAlert2Module,
     HttpClientModule,
     RouterModule,
-    DataTablesModule
+    DataTablesModule,
+    NgxPaginationModule,
+    MatPaginatorModule
   ],
-  providers: [],
+  providers: [KullaniciService, LoginGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

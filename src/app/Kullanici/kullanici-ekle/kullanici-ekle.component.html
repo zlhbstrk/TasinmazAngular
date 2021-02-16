@@ -30,6 +30,7 @@
           class="form-control"
           placeholder="E-mail Giriniz."
           formControlName="Email"
+          required autofocus
           [class]="form.get('Email')!.invalid ? 'is-invalid' : 'is-valid'"
         />
       </div>
@@ -64,7 +65,8 @@
             type="submit"
             class="btn btn-primary"
             [disabled]="form.invalid"
-          ><i class="fas fa-save"></i> &nbsp; KAYDET
+          >
+            <i class="fas fa-save"></i> &nbsp; KAYDET
           </button>
           <button
             type="reset"
@@ -73,6 +75,15 @@
           >
             <i class="fas fa-trash-alt"></i> &nbsp; Temizle
           </button>
+        </div>
+        <div class="col-md-6" style="text-align: right">
+          <a
+            type="button"
+            class="btn btn-danger"
+            style="margin-left: 16px"
+            href="/kullanicilistele"
+            ><i class="fas fa-arrow-left"></i> &nbsp; Geri Dön
+          </a>
         </div>
       </div>
     </div>

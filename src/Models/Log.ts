@@ -5,6 +5,6 @@ export class Log{
     DurumId!:number;
     IslemTipId!:number;
     Aciklama!:string;
-    Tarih!:Date;
+    Tarih!:Date | string;
     IP!:string;
 }

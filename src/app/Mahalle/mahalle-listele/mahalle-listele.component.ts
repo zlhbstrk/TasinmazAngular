@@ -18,16 +18,18 @@ export class MahalleListeleComponent implements OnInit {
   constructor(private MahalleServis:MahalleService, private IlceServis:IlceService, private IlServis:IlService) { }
 
   dtOptions = {};
+  dtTrigger: Subject<Mahalle> = new Subject<Mahalle>();
+
   mahalleler: Mahalle[] = [];
   ilceler: Ilce[] = [];
   iller: Il[] = [];
-  countDizi:number[] = [];
   kayitSayi:number = 10;
-  dtTrigger: Subject<Mahalle> = new Subject<Mahalle>();
+  sayfa:number = 1;
+  pageCount:number = 1;
 
   ngOnInit(): void {
     this.dtOptions = {
-      dom: 'Bfrti',
+      dom: 'Bfrt',
       pagingType: 'full_numbers',
       buttons: [ ],
     };
@@ -43,18 +45,14 @@ export class MahalleListeleComponent implements OnInit {
       this.iller = data;
     });
     this.MahalleServis.Count().subscribe((count) => {
-      this.countDiziDoldur(count);
+      this.pageCount = count;
     })
   }
 
-  countDiziDoldur(count:number){
-    const buttonCount = Math.ceil(count/this.kayitSayi);
-    for(let i=0;i<buttonCount;i++){
-      this.countDizi.push(i);
-    }
-  }
-
-  sayfaGetir(skipDeger:number, takeDeger:number){
+  sayfaGetir(skipDeger:number, takeDeger:number|any, event?:number){
+    this.sayfa = event ? event: 1;
+    this.kayitSayi = takeDeger;
+    
     this.MahalleServis.GetirMahalle(skipDeger, takeDeger).subscribe((data) => {
       this.mahalleler = data
     });
@@ -78,6 +76,7 @@ export class MahalleListeleComponent implements OnInit {
               'Silme işlemi başarıyla tamamlandı.',
               'success'
             ).then(() => {
+              this.dtOptions
               this.MahalleServis.GetirMahalle(0, this.kayitSayi).subscribe((data) => {
                 this.mahalleler = data;
               });

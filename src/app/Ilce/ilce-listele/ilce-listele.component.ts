@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { Subject } from 'rxjs';
-import { Il } from 'src/Models/Il';
 import { Ilce } from 'src/Models/Ilce';
 import { IlService } from 'src/Services/il.service';
 import { IlceService } from 'src/Services/ilce.service';
@@ -16,15 +15,16 @@ export class IlceListeleComponent implements OnInit {
   constructor(private IlceServis: IlceService, private IlServis: IlService) { }
 
   dtOptions = {};
-  ilceler: Ilce[] = [];
-  iller: Il[] = [];
-  countDizi:number[] = [];
-  kayitSayi:number = 10;
   dtTrigger: Subject<Ilce> = new Subject<Ilce>();
+
+  ilceler: Ilce[] = [];
+  kayitSayi:number = 10;
+  sayfa:number = 1;
+  pageCount:number = 1;
 
   ngOnInit(): void {
     this.dtOptions = {
-      dom: 'Bfrti',
+      dom: 'Bfrt',
       pagingType: 'full_numbers',
       buttons: [ ]
     };
@@ -33,23 +33,16 @@ export class IlceListeleComponent implements OnInit {
       this.ilceler = data;
       this.dtTrigger.next();
     });
-    this.IlServis.FullGetirIl().subscribe((data) => {
-      this.iller = data;
-    });
     
     this.IlceServis.Count().subscribe((count) => {
-      this.countDiziDoldur(count);
+      this.pageCount = count;
     })
   }
 
-  countDiziDoldur(count:number){
-    const buttonCount = Math.ceil(count/this.kayitSayi);
-    for(let i=0;i<buttonCount;i++){
-      this.countDizi.push(i);
-    }
-  }
-
-  sayfaGetir(skipDeger:number, takeDeger:number){
+  sayfaGetir(skipDeger:number, takeDeger:number|any, event?:number){
+    this.sayfa = event ? event: 1;
+    this.kayitSayi = takeDeger;
+    
     this.IlceServis.GetirIlce(skipDeger, takeDeger).subscribe((data) => {
       this.ilceler = data
     });

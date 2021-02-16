@@ -20,17 +20,19 @@ export class TasinmazListeleComponent implements OnInit {
   constructor(private tasinmazSevis: TasinmazService, private MahalleServis:MahalleService, private IlceServis:IlceService, private IlServis:IlService) { }
 
   dtOptions = {};
+  dtTrigger: Subject<Tasinmaz> = new Subject<Tasinmaz>();
+
   tasinmazlar: Tasinmaz[] = [];
   mahalleler: Mahalle[] = [];
   ilceler: Ilce[] = [];
   iller: Il[] = [];
-  countDizi:number[] = [];
   kayitSayi:number = 10;
-  dtTrigger: Subject<Tasinmaz> = new Subject<Tasinmaz>();
+  sayfa:number = 1;
+  pageCount:number = 1;
 
   ngOnInit(): void {
     this.dtOptions = {
-      dom: 'Bfrti',
+      dom: 'Bfrt',
       pagingType: 'full_numbers',
       buttons: [
         'excel'
@@ -51,18 +53,13 @@ export class TasinmazListeleComponent implements OnInit {
       this.iller = data;
     });
     this.tasinmazSevis.Count().subscribe((count) => {
-      this.countDiziDoldur(count);
+      this.pageCount = count;
     })
   }
 
-  countDiziDoldur(count:number){
-    const buttonCount = Math.ceil(count/this.kayitSayi);
-    for(let i=0;i<buttonCount;i++){
-      this.countDizi.push(i);
-    }
-  }
-
-  sayfaGetir(skipDeger:number, takeDeger:number){
+  sayfaGetir(skipDeger:number, takeDeger:number|any, event?:number){
+    this.sayfa = event ? event: 1;
+    this.kayitSayi = takeDeger;
     this.tasinmazSevis.GetirTasinmaz(skipDeger, takeDeger).subscribe((data) => {
       this.tasinmazlar = data
     });

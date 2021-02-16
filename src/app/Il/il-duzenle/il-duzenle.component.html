@@ -1,51 +1,60 @@
 <div class="card card-primary">
-    <div class="card-header">
-      <h3 class="card-title">İl Düzenle Ekranı</h3>
-    </div>
-  
-    <form [formGroup]="form" (ngSubmit)="onSubmit()">
-      <div class="card-body">
-        <div class="form-group">
-          <label>İl Adı</label>
-          <input
-            type="text"
-            class="form-control"
-            placeholder="İl Adı Giriniz."
-            formControlName="Ad"
-            [class]="form.get('Ad')!.invalid ? 'is-invalid' : 'is-valid'"
-          />
-        </div>
-        <div class="form-group">
-          <label>Plaka</label>
-          <input
-            type="text"
-            class="form-control"
-            placeholder="Plaka Giriniz."
-            formControlName="Plaka"
-            [class]="form.get('Plaka')!.invalid ? 'is-invalid' : 'is-valid'"
-          />
-        </div>
-      </div>
-  
-      <div class="card-footer">
-        <div class="row">
-          <div class="col-md-6">
-            <button
-              type="submit"
-              class="btn btn-primary"
-              [disabled]="form.invalid"
-            ><i class="fas fa-save"></i> &nbsp; KAYDET
-            </button>
-            <button
-              type="reset"
-              class="btn btn-default"
-              style="margin-left: 16px"
-            >
-              <i class="fas fa-trash-alt"></i> &nbsp; Temizle
-            </button>
-          </div>
-        </div>
-      </div>
-  
-    </form>
+  <div class="card-header">
+    <h3 class="card-title">İl Düzenle Ekranı</h3>
   </div>
+
+  <form [formGroup]="form" (ngSubmit)="onSubmit()">
+    <div class="card-body">
+      <div class="form-group">
+        <label>İl Adı</label>
+        <input
+          type="text"
+          class="form-control"
+          placeholder="İl Adı Giriniz."
+          formControlName="Ad"
+          [class]="form.get('Ad')!.invalid ? 'is-invalid' : 'is-valid'"
+        />
+      </div>
+      <div class="form-group">
+        <label>Plaka</label>
+        <input
+          type="text"
+          class="form-control"
+          placeholder="Plaka Giriniz."
+          formControlName="Plaka"
+          [class]="form.get('Plaka')!.invalid ? 'is-invalid' : 'is-valid'"
+        />
+      </div>
+    </div>
+
+    <div class="card-footer">
+      <div class="row">
+        <div class="col-md-6">
+          <button
+            type="submit"
+            class="btn btn-primary"
+            [disabled]="form.invalid"
+          >
+            <i class="fas fa-save"></i> &nbsp; KAYDET
+          </button>
+          <button
+            type="reset"
+            class="btn btn-default"
+            style="margin-left: 16px"
+          >
+            <i class="fas fa-trash-alt"></i> &nbsp; Temizle
+          </button>
+        </div>
+        <div class="col-md-6" style="text-align: right">
+          <a
+            type="button"
+            class="btn btn-danger"
+            style="margin-left: 16px"
+            href="/illistele"
+            ><i class="fas fa-arrow-left"></i> &nbsp; Geri Dön
+          </a>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>

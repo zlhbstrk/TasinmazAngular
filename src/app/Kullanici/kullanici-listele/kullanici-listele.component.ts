@@ -1,7 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { DataTablesModule } from 'angular-datatables';
 import { Subject } from 'rxjs';
-import { skipUntil } from 'rxjs/operators';
 import { Kullanici } from 'src/Models/Kullanici';
 import { KullaniciService } from 'src/Services/kullanici.service';
 import Swal from 'sweetalert2';
@@ -15,14 +13,16 @@ export class KullaniciListeleComponent implements OnInit {
   constructor(private KullaniciServis: KullaniciService) {}
 
   dtOptions = {};
-  kullanicilar: Kullanici[] = [];
-  countDizi:number[] = [];
-  kayitSayi:number = 10;
   dtTrigger: Subject<Kullanici> = new Subject<Kullanici>();
+
+  kullanicilar: Kullanici[] = [];
+  kayitSayi:number = 10;
+  sayfa:number = 1;
+  pageCount:number = 0;
 
   ngOnInit(): void {
     this.dtOptions = {
-      dom: 'Bfrti',
+      dom: 'Bfrt',
       pagingType: 'full_numbers',
       buttons: [],
     };
@@ -33,20 +33,15 @@ export class KullaniciListeleComponent implements OnInit {
     });
 
     this.KullaniciServis.Count().subscribe((count) => {
-      this.countDiziDoldur(count);
+      this.pageCount = count;
     })
   }
 
-  countDiziDoldur(count:number){
-    const buttonCount = Math.ceil(count/this.kayitSayi);
-    for(let i=0;i<buttonCount;i++){
-      this.countDizi.push(i);
-    }
-  }
-
-  sayfaGetir(skipDeger:number, takeDeger:number){
+  sayfaGetir(skipDeger:number, takeDeger:number|any, event?:number){
+    this.sayfa = event ? event: 1;
+    this.kayitSayi = takeDeger;
     this.KullaniciServis.GetirKullanici(skipDeger, takeDeger).subscribe((data) => {
-      this.kullanicilar = data
+      this.kullanicilar = data;
     });
   }
 
@@ -68,7 +63,7 @@ export class KullaniciListeleComponent implements OnInit {
             'Silme işlemi başarıyla tamamlandı.',
             'success'
           ).then(() => {
-            this.KullaniciServis.GetirKullanici(0,this.kayitSayi).subscribe((data) => {
+            this.KullaniciServis.GetirKullanici(0, this.kayitSayi).subscribe((data) => {
               this.kullanicilar = data;
             });
           });

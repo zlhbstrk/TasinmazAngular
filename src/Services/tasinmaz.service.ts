@@ -16,7 +16,7 @@ export class TasinmazService {
 
   Ekle(tasinmaz:Tasinmaz) : Observable<Tasinmaz>
   {
-   return this.http.post<Tasinmaz>(this.baseURL + 'Add',tasinmaz).pipe(catchError(this.handleError));
+   return this.http.post<Tasinmaz>(this.baseURL + 'Add', tasinmaz).pipe(catchError(this.handleError));
   }
 
   GetirTasinmaz(skipDeger:number, takeDeger:number) :Observable<Tasinmaz[]>
@@ -31,7 +31,7 @@ export class TasinmazService {
 
   Duzenle(tasinmaz:Tasinmaz) : Observable<Tasinmaz>
   {
-    return this.http.put<Tasinmaz>(this.baseURL + "Update",tasinmaz).pipe(catchError(this.handleError));
+    return this.http.put<Tasinmaz>(this.baseURL + "Update", tasinmaz).pipe(catchError(this.handleError));
   }
 
   Getir(id:number) : Observable<Tasinmaz>

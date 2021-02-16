@@ -31,10 +31,10 @@ export class TasinmazEkleComponent implements OnInit {
     IlId: new FormControl(null, [Validators.required]),
     IlceId: new FormControl(null, [Validators.required]),
     MahalleId: new FormControl(null, [Validators.required]),
-    Ada: new FormControl(null, [Validators.required]),
-    Parsel: new FormControl(null, [Validators.required]),
-    Nitelik: new FormControl(null, [Validators.required]),
-    Adres: new FormControl(null, [Validators.required])
+    Ada: new FormControl(null, [Validators.required, Validators.maxLength(10)]),
+    Parsel: new FormControl(null, [Validators.required, Validators.maxLength(10)]),
+    Nitelik: new FormControl(null, [Validators.required, Validators.maxLength(50)]),
+    Adres: new FormControl(null, [Validators.required, Validators.maxLength(100)])
   });
   
   ngOnInit(): void {
@@ -72,6 +72,7 @@ export class TasinmazEkleComponent implements OnInit {
   onSubmit(){
     if(this.form.valid) {
       this.model = this.form.value;
+      this.model.AktifMi = true;
       this.tasinmazServis.Ekle(this.model).subscribe((data) => {
         if(data) {
           Swal.fire({

@@ -17,8 +17,8 @@ export class IlEkleComponent implements OnInit {
   model!:Il;
 
   form = new FormGroup({
-    Ad: new FormControl(null, [Validators.required]),
-    Plaka: new FormControl(null, [Validators.required])
+    Ad: new FormControl(null, [Validators.required, Validators.maxLength(30)]),
+    Plaka: new FormControl(null, [Validators.required, Validators.maxLength(2)])
   });
   
   onSubmit() {

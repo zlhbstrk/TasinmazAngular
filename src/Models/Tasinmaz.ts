@@ -1,5 +1,6 @@
 import { Il } from "./Il";
 import { Ilce } from "./Ilce";
+import { Kullanici } from "./Kullanici";
 import { Mahalle } from "./Mahalle";
 
 export class Tasinmaz {
@@ -14,4 +15,7 @@ export class Tasinmaz {
     Parsel!:number;
     Nitelik!:string;
     Adres!:string;
+    KullaniciId!:number;
+    Kullanici!:Kullanici;
+    AktifMi!: boolean
 }

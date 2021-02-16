@@ -21,7 +21,7 @@ export class IlceDuzenleComponent implements OnInit {
   id!:number;
 
   form = new FormGroup({
-    Ad: new FormControl(null, [Validators.required]),
+    Ad: new FormControl(null, [Validators.required, Validators.maxLength(30)]),
     IlId: new FormControl(null, [Validators.required])
   });
   

@@ -1,0 +1,57 @@
+<div class="login-box">
+  <!-- /.login-logo -->
+  <div class="card card-outline card-primary">
+    <div class="card-header text-center">
+      <a class="h1"><b>Taşınmaz Projesi</b></a>
+    </div>
+    <form [formGroup]="form" (ngSubmit)="login()">
+      <div class="card-body">
+        <div class="input-group mb-3">
+          <input
+            type="email"
+            class="form-control"
+            placeholder="E-mail Giriniz."
+            formControlName="Email"
+            [class]="form.get('Email')!.invalid ? 'is-invalid' : 'is-valid'"
+            required
+            autofocus
+          />
+          <div class="input-group-append">
+            <div class="input-group-text">
+              <span class="fas fa-envelope"></span>
+            </div>
+          </div>
+        </div>
+        <div class="input-group mb-3">
+          <input
+            type="password"
+            class="form-control"
+            placeholder="Şifre Giriniz."
+            formControlName="Sifre"
+            [class]="form.get('Sifre')!.invalid ? 'is-invalid' : 'is-valid'"
+          />
+          <div class="input-group-append">
+            <div class="input-group-text">
+              <span class="fas fa-lock"></span>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <!-- /.col -->
+          <div class="col-4">
+            <button
+              type="submit"
+              class="btn btn-primary btn-block"
+              [disabled]="form.invalid"
+            >
+              Giriş
+            </button>
+          </div>
+          <!-- /.col -->
+        </div>
+      </div>
+    </form>
+    <!-- /.card-body -->
+  </div>
+  <!-- /.card -->
+</div>

@@ -1,50 +1,91 @@
 <div class="row">
-    <div class="col-md-12">
-      <div class="card card-primary card-outline">
-        <div class="card-header">
-          <h3 class="card-title">Log Listele Ekranı</h3>
-        </div>
-        <div class="card-body">
-          <div id="example1_wrapper" class="dataTables_wrapper dt-bootstrap4">
-            <div class="row">
-              <div class="col-sm-12">
-                <div
-                  id="example1_wrapper"
-                  class="dataTables_wrapper dt-bootstrap4 no-footer"
-                >
-                  <div class="row">
-                    <div class="col-sm-12">
-                      <table
-                        datatable
-                        [dtOptions]="dtOptions"
-                        [dtTrigger]="dtTrigger"
-                        class="table table-bordered table-striped dataTable dtr-inline no-footer"
-                      >
-                        <thead>
-                          <tr>
-                            <th>Kullanıcı Adı</th>
-                            <th>Kullanıcı ID</th>
-                            <th>Durum</th>
-                            <th>İşlem Tipi</th>
-                            <th>Açıklama</th>
-                            <th>Tarih/Saat</th>
-                            <th>IP</th>
-                          </tr>
-                        </thead>
-                        <tbody>
-                          <tr *ngFor="let log of loglar">
-                            <td>{{ log.KullaniciAdi }}</td>
-                            <td>{{ log.KullaniciId }}</td>
-                            <td>{{ log.DurumId }}</td>
-                            <td>{{ log.IslemTipId }}</td>
-                            <td>{{ log.Aciklama }}</td>
-                            <td>{{ log.Tarih }}</td>
-                            <td>{{ log.IP }}</td>
-                          </tr>
-                        </tbody>
-                      </table>
-                      <div class="col-lg-1 col-md-1 col-sm-1">
-                        <button class="form-control" (click)="sayfaGetir(i*kayitSayi,kayitSayi)" *ngFor="let i of countDizi" >{{i+1}}</button>
+  <div class="col-md-12">
+    <div class="card card-primary card-outline">
+      <div class="card-header">
+        <h3 class="card-title">Log Listele Ekranı</h3>
+      </div>
+      <div class="card-body">
+        <div id="example1_wrapper" class="dataTables_wrapper dt-bootstrap4">
+          <div class="row">
+            <div class="col-sm-12">
+              <div
+                id="example1_wrapper"
+                class="dataTables_wrapper dt-bootstrap4 no-footer"
+              >
+                <div class="row">
+                  <div class="col-sm-12">
+                    <table
+                      datatable
+                      [dtOptions]="dtOptions"
+                      [dtTrigger]="dtTrigger"
+                      class="table table-bordered table-striped dataTable dtr-inline no-footer"
+                    >
+                      <thead>
+                        <tr>
+                          <th>Kullanıcı Adı</th>
+                          <th>Kullanıcı ID</th>
+                          <th>Durum</th>
+                          <th>İşlem Tipi</th>
+                          <th>Açıklama</th>
+                          <th>Tarih/Saat</th>
+                          <th>IP</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr
+                          *ngFor="
+                            let log of loglar
+                              | paginate
+                                : {
+                                    id: 'listing_pagination',
+                                    itemsPerPage: kayitSayi,
+                                    currentPage: sayfa,
+                                    totalItems: pageCount - kayitSayi
+                                  }
+                          "
+                        >
+                          <td>{{ log.KullaniciAdi }}</td>
+                          <td>{{ log.KullaniciId }}</td>
+                          <td>{{ log.DurumId }}</td>
+                          <td>{{ log.IslemTipId }}</td>
+                          <td>{{ log.Aciklama }}</td>
+                          <td>{{ log.Tarih }}</td>
+                          <td>{{ log.IP }}</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                    <br />
+                    <div class="row">
+                      <div class="col-md-6">
+                        <div class="col-lg-2 col-md-2 col-sm-2">
+                          <div class="form-group">
+                            <select
+                              #t
+                              (change)="sayfaGetir(0, t.value)"
+                              class="custom-select form-control"
+                              [value]="10"
+                            >
+                              <option [value]="5">5</option>
+                              <option [value]="10">10</option>
+                              <option [value]="25">25</option>
+                              <option [value]="50">50</option>
+                              <option [value]="100">100</option>
+                            </select>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-md-6">
+                        <div class="col-lg-12 col-md-12 col-sm-12">
+                          <!-- <mat-paginator [length]="loglar.length" [pageSize]:400 [pageSizeOptions]="[5, 10, 25, 5, 100]" (page)="pageEvent = $event"></mat-paginator> -->
+                          <pagination-controls
+                            id="listing_pagination"
+                            directionLinks:1
+                            (pageChange)="
+                              sayfaGetir($event * kayitSayi, kayitSayi, $event)
+                            "
+                          ></pagination-controls>
+                          <!-- <pagination-controls previousLabel="Prev" nextLabel="Next" responsive:1></pagination-controls> -->
+                        </div>
                       </div>
                     </div>
                   </div>
@@ -56,3 +97,4 @@
       </div>
     </div>
   </div>
+</div>
