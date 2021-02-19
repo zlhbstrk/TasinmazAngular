@@ -38,6 +38,7 @@ export class KullaniciEkleComponent implements OnInit {
       this.model!.Yetki! = parseInt(this.form.controls['Yetki'].value);
       this.model.AktifMi = true;
       this.kullaniciServis.Ekle(this.model).subscribe((data) => {
+        console.log(data);
         if(data) {
           Swal.fire({
             title: 'Başarılı',

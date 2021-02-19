@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
-import { KullaniciEkleComponent } from 'src/app/Kullanici/kullanici-ekle/kullanici-ekle.component';
+import { KullaniciService } from 'src/Services/kullanici.service';
+
 
 @Component({
   selector: 'app-nav',
@@ -10,16 +9,12 @@ import { KullaniciEkleComponent } from 'src/app/Kullanici/kullanici-ekle/kullani
 })
 export class NavComponent implements OnInit {
 
-  constructor() { }
+  constructor(private kullaniciServis: KullaniciService) { }
 
-  // routes: Routes = [
-  //   {
-  //     path: 'kullaniciekle',
-  //     pathMatch: 'KullaniciEkleComponent'
-  //   }
-  // ];
+  isAdmin:boolean = true;
 
   ngOnInit(): void {
+    this.isAdmin = this.kullaniciServis.isAdmin();
   }
 
 }

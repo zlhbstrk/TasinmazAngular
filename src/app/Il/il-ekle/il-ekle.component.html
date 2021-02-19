@@ -13,6 +13,7 @@
           placeholder="İl Adı Giriniz."
           formControlName="Ad"
           required autofocus
+          pattern="[a-zA-Z-]+"
           [class]="form.get('Ad')!.invalid ? 'is-invalid' : 'is-valid'"
         />
       </div>
@@ -23,6 +24,7 @@
           class="form-control"
           placeholder="Plaka Giriniz."
           formControlName="Plaka"
+          pattern="\d*"
           [class]="form.get('Plaka')!.invalid ? 'is-invalid' : 'is-valid'"
         />
       </div>

@@ -23,8 +23,13 @@ export class TasinmazService {
   {
     return this.http.get<Tasinmaz[]>(this.baseURL + "GetAll/" + skipDeger + "/" + takeDeger).pipe(catchError(this.handleError));
   }
+  
+  Filtre(filtre:string) :Observable<Tasinmaz[]>
+  {
+    return this.http.get<Tasinmaz[]>(this.baseURL + "GetAllFilter/" + filtre).pipe(catchError(this.handleError));
+  }
 
-  Sil(id:number) 
+  Sil(id:number)
   {
     return this.http.delete(this.baseURL + "Delete/"+ id).pipe(catchError(this.handleError));
   }

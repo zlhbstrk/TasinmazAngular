@@ -82,7 +82,7 @@ export class TasinmazDuzenleComponent implements OnInit {
     if (this.form.valid) {
       this.model = this.form.value;
       this.model.Id = parseInt(this.id.toString());
-      
+
       this.tasinmazServis.Duzenle(this.model).subscribe((data) => {
         if (data) {
           Swal.fire({

@@ -40,7 +40,7 @@
                                     id: 'listing_pagination',
                                     itemsPerPage: kayitSayi,
                                     currentPage: sayfa,
-                                    totalItems: pageCount - kayitSayi
+                                    totalItems: pageCount
                                   }
                           "
                         >
@@ -81,7 +81,7 @@
                             id="listing_pagination"
                             directionLinks:1
                             (pageChange)="
-                              sayfaGetir($event * kayitSayi, kayitSayi, $event)
+                              sayfaGetir(($event-1) * kayitSayi, kayitSayi, $event)
                             "
                           ></pagination-controls>
                           <!-- <pagination-controls previousLabel="Prev" nextLabel="Next" responsive:1></pagination-controls> -->

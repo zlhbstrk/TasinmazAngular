@@ -1,7 +1,5 @@
 import { Component, NgModule, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { Routes, RouterModule } from '@angular/router';
-import { KullaniciEkleComponent } from 'src/app/Kullanici/kullanici-ekle/kullanici-ekle.component';
 import { KullaniciService } from 'src/Services/kullanici.service';
 
 @Component({

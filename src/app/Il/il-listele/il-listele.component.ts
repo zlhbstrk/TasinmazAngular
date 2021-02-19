@@ -23,7 +23,7 @@ export class IlListeleComponent implements OnInit {
 
   ngOnInit(): void {
     this.dtOptions = {
-      dom: 'Bfrt',
+      dom: 'Brt',
       pagingType: 'full_numbers',
       buttons: [ ]
     };

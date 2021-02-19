@@ -45,7 +45,7 @@
                                     id: 'listing_pagination',
                                     itemsPerPage: kayitSayi,
                                     currentPage: sayfa,
-                                    totalItems: pageCount - kayitSayi
+                                    totalItems: pageCount
                                   }">
                           <td>{{ il.Ad }}</td>
                           <td>{{ il.Plaka }}</td>
@@ -95,7 +95,7 @@
                             id="listing_pagination"
                             directionLinks:1
                             (pageChange)="
-                              sayfaGetir($event * kayitSayi, kayitSayi, $event)
+                              sayfaGetir(($event-1) * kayitSayi, kayitSayi, $event)
                             "
                           ></pagination-controls>
                         </div>

@@ -15,7 +15,7 @@ export class IlService {
 
   Ekle(il:Il) : Observable<Il>
   {
-   return this.http.post<Il>(this.baseURL + 'Add',il).pipe(catchError(this.handleError));
+   return this.http.post<Il>(this.baseURL + 'Add', il).pipe(catchError(this.handleError));
   }
 
   GetirIl(skipDeger:number, takeDeger:number) :Observable<Il[]>
