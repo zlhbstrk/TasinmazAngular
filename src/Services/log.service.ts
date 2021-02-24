@@ -6,31 +6,38 @@ import { Log } from 'src/Models/Log';
 import Swal from 'sweetalert2';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class LogService {
+  constructor(private http: HttpClient) {}
 
-  constructor(private http:HttpClient) { }
+  readonly baseURL = 'https://localhost:5001/api/Log/';
 
-  readonly baseURL = 'https://localhost:5001/api/Log/'
-
-  GetirLog(skipDeger:number, takeDeger:number) :Observable<Log[]>
-  {
-    return this.http.get<Log[]>(this.baseURL + "GetAll/" + skipDeger + "/" + takeDeger).pipe(catchError(this.handleError));
+  GetirLog(skipDeger: number, takeDeger: number): Observable<Log[]> {
+    return this.http
+      .get<Log[]>(this.baseURL + 'GetAll/' + skipDeger + '/' + takeDeger)
+      .pipe(catchError(this.handleError));
   }
 
-  Count() : Observable<number>
-  {
-    return this.http.get<number>(this.baseURL + "GetCount").pipe(catchError(this.handleError));
+  Count(): Observable<number> {
+    return this.http
+      .get<number>(this.baseURL + 'GetCount')
+      .pipe(catchError(this.handleError));
   }
 
-  handleError(err: HttpErrorResponse){
+  Filtre(filtre: string): Observable<Log[]> {
+    return this.http
+      .get<Log[]>(this.baseURL + 'GetAllFilter/' + filtre)
+      .pipe(catchError(this.handleError));
+  }
+
+  handleError(err: HttpErrorResponse) {
     Swal.fire({
-      title: "Hatalı",
-      text: "Log servisinde hata oluştu!",
+      title: 'Hatalı',
+      text: 'Log servisinde hata oluştu!',
       icon: 'error',
-      confirmButtonText:'Tamam'
-    })
+      confirmButtonText: 'Tamam',
+    });
     return throwError('Log servisinde hata oluştu!');
   }
 }

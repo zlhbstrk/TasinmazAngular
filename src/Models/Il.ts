@@ -2,5 +2,6 @@ export class Il
 {
     Id!:number;
     Ad!:string;
-    Plaka!:number
+    Plaka!:number;
+    AktifMi!:boolean;
 }

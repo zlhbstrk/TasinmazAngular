@@ -6,4 +6,5 @@ export class Ilce
     IlId!:number;
     Ad!:string;
     Il!:Il;
+    AktifMi!:boolean;
 }

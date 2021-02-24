@@ -1,12 +1,12 @@
 import {
   HttpClient,
   HttpErrorResponse,
-  HttpHeaders,
 } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
+import { Helper } from 'src/Helpers/helper';
 import { Kullanici } from 'src/Models/Kullanici';
 import Swal from 'sweetalert2';
 
@@ -22,7 +22,7 @@ export class KullaniciService {
       .post<Kullanici>(this.baseURL + 'Add', kullanici)
       .pipe(catchError(this.handleError));
   }
-
+  
   GetirKullanici(
     skipDeger: number,
     takeDeger: number
@@ -73,12 +73,6 @@ export class KullaniciService {
     }
   }
 
-  // httpHeaders() {
-  //   const headers = new HttpHeaders {
-  //       headers: loc
-  //   };
-  // }
-
   isLoggedIn() {
     if (localStorage.getItem('currentUser')) {
       return true;
@@ -89,6 +83,7 @@ export class KullaniciService {
 
   logOut() {
     localStorage.removeItem('currentUser');
+    localStorage.removeItem('ip');
     this.loggedIn = false;
   }
 

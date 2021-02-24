@@ -5,15 +5,46 @@
         <h3 class="card-title">Log Listele Ekranı</h3>
       </div>
       <div class="card-body">
-        <div id="example1_wrapper" class="dataTables_wrapper dt-bootstrap4">
+        <div class="dataTables_wrapper dt-bootstrap4">
           <div class="row">
             <div class="col-sm-12">
-              <div
-                id="example1_wrapper"
-                class="dataTables_wrapper dt-bootstrap4 no-footer"
-              >
+              <div class="dataTables_wrapper dt-bootstrap4 no-footer">
                 <div class="row">
                   <div class="col-sm-12">
+                    <div class="col-lg-12 col-md-12 col-sm-12">
+                      <form
+                        [formGroup]="form"
+                        class="ng-untouched ng-pristine ng-invalid"
+                      >
+                        <div class="row">
+                          <div class="col-lg-8 col-md-8 col-sm-8"></div>
+                          <div class="col-md-3">
+                            <div class="form-group">
+                              <input
+                                type="text"
+                                formControlName="searchInput"
+                                placeholder="Ara"
+                                class="form-control ng-untouched ng-pristine ng-invalid"
+                              />
+                            </div>
+                          </div>
+
+                          <div class="col-md-1">
+                            <div class="form-group">
+                              <a
+                                type="submit"
+                                class="btn btn-primary btn-block"
+                                (click)="Search()"
+                              >
+                                <i class="fas fa-search"></i>
+                                &nbsp; ARA
+                              </a>
+                            </div>
+                          </div>
+                        </div>
+                      </form>
+                    </div>
+                    <hr />
                     <table
                       datatable
                       [dtOptions]="dtOptions"
@@ -22,8 +53,8 @@
                     >
                       <thead>
                         <tr>
-                          <th>Kullanıcı Adı</th>
                           <th>Kullanıcı ID</th>
+                          <th>Kullanıcı Adı</th>
                           <th>Durum</th>
                           <th>İşlem Tipi</th>
                           <th>Açıklama</th>
@@ -44,10 +75,10 @@
                                   }
                           "
                         >
-                          <td>{{ log.KullaniciAdi }}</td>
                           <td>{{ log.KullaniciId }}</td>
-                          <td>{{ log.DurumId }}</td>
-                          <td>{{ log.IslemTipId }}</td>
+                          <td>{{ log.KullaniciAdi }}</td>
+                          <td>{{ log.Durum.Ad }}</td>
+                          <td>{{ log.IslemTip.Ad }}</td>
                           <td>{{ log.Aciklama }}</td>
                           <td>{{ log.Tarih }}</td>
                           <td>{{ log.IP }}</td>
@@ -81,7 +112,11 @@
                             id="listing_pagination"
                             directionLinks:1
                             (pageChange)="
-                              sayfaGetir(($event-1) * kayitSayi, kayitSayi, $event)
+                              sayfaGetir(
+                                ($event - 1) * kayitSayi,
+                                kayitSayi,
+                                $event
+                              )
                             "
                           ></pagination-controls>
                           <!-- <pagination-controls previousLabel="Prev" nextLabel="Next" responsive:1></pagination-controls> -->

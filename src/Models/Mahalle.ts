@@ -6,4 +6,5 @@ export class Mahalle
     Ilce!:Ilce;
     IlceId!:number;
     Ad!:string;
+    AktifMi!:boolean;
 }

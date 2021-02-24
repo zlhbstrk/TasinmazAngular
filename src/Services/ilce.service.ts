@@ -15,7 +15,7 @@ export class IlceService {
 
   Ekle(ilce:Ilce) : Observable<Ilce>
   {
-   return this.http.post<Ilce>(this.baseURL + 'Add',ilce).pipe(catchError(this.handleError));
+   return this.http.post<Ilce>(this.baseURL + 'Add', ilce).pipe(catchError(this.handleError));
   }
 
   GetirIlce(skipDeger:number, takeDeger:number) : Observable<Ilce[]>

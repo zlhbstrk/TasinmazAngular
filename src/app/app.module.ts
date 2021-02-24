@@ -31,7 +31,6 @@ import { LoginComponent } from './Login/login/login.component';
 import { KullaniciService } from 'src/Services/kullanici.service';
 import { LoginGuard } from './Login/login/login.guard';
 import { NgxPaginationModule } from 'ngx-pagination';
-//import { MatPaginatorModule } from '@angular/material/paginator';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { Ng2OrderModule } from 'ng2-order-pipe';
 import { NgSearchPipe } from 'ng-search-pipe';
@@ -69,7 +68,6 @@ import { NgSearchPipe } from 'ng-search-pipe';
     RouterModule,
     DataTablesModule,
     NgxPaginationModule,
-    //MatPaginatorModule,
     Ng2SearchPipeModule,
     Ng2OrderModule,
     NgSearchPipe

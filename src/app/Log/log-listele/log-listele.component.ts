@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { FormControl, FormGroup } from '@angular/forms';
 import { Subject } from 'rxjs';
+import { Durum } from 'src/Models/Durum';
+import { IslemTip } from 'src/Models/IslemTip';
 import { Log } from 'src/Models/Log';
 import { LogService } from 'src/Services/log.service';
 
@@ -15,9 +18,17 @@ export class LogListeleComponent implements OnInit {
   dtTrigger: Subject<Log> = new Subject<Log>();
 
   loglar: Log[] = [];
+  durumlar: Durum[] = [];
+  islemTipleri: IslemTip[] = [];
   kayitSayi: number = 10;
   sayfa: number = 1;
   pageCount: number = 1;
+
+  log: Log[] = [];
+
+  form = new FormGroup({
+    searchInput: new FormControl(''),
+  });
 
   ngOnInit(): void {
     this.dtOptions = {
@@ -30,15 +41,6 @@ export class LogListeleComponent implements OnInit {
       data.forEach((e) => {
         e.Tarih = this.tarihFormatla(new Date(e.Tarih!));
       });
-      // data.map(e => {
-      //   const day = new Date(e.Tarih).getDate();
-      //   const month = new Date(e.Tarih).getMonth() +1;
-      //   const year = new Date(e.Tarih).getFullYear();
-      //   const hour = new Date(e.Tarih).getHours();
-      //   const minute = new Date(e.Tarih).getMinutes();
-      //   const tarih = day + "." + month + "." + year + " / " + hour + "." + minute;
-      //   e.Tarih = tarih;
-      // })
       this.loglar = data;
       this.dtTrigger.next();
     });
@@ -66,6 +68,7 @@ export class LogListeleComponent implements OnInit {
 
     return day + '.' + month + '.' + year + ' / ' + hour + '.' + minute;
   }
+  
   sayfaGetir(skipDeger: number, takeDeger: number | any, event?: number) {
     this.sayfa = event ? event : 1;
     this.kayitSayi = takeDeger;
@@ -76,5 +79,15 @@ export class LogListeleComponent implements OnInit {
       });
       this.loglar = data;
     });
+  }
+
+  Search() {
+    const input = this.form.controls['searchInput'].value;
+    if (input) {
+      this.logServis.Filtre(input).subscribe((data) => {
+        alert(data);
+        this.log = data;
+      });
+    }
   }
 }

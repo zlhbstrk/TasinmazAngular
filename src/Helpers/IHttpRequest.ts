@@ -2,15 +2,13 @@ import { Observable } from 'rxjs';
 import { HttpErrorResponse } from '@angular/common/http';
 
 export interface IHttpRequests<T> {
+  path: string;
 
-  /** 
-   * Servisin yolu belirtilecektir.
-   **/
-  path:string; 
-
-  get(id?: number): Observable<T[]>;
-  put(id: number, object: T): Observable<T>;
-  delete(id:number):boolean;
-  post(object:T):boolean;
-  handleError(err: HttpErrorResponse):Observable<never>
+  Getir(id?: number): Observable<T>;
+  GetirSayfa(skipDeger: number, takeDeger: number): Observable<T[]>;
+  Sil(id: number): boolean;
+  Ekle(object: T): Observable<T>;
+  Duzenle(object: T): Observable<T>;
+  Count(): Observable<number>;
+  handleError(err: HttpErrorResponse): Observable<never>;
 }
