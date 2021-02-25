@@ -31,7 +31,8 @@
           <!-- Sidebar user panel (optional) -->
           <div class="user-panel mt-3 pb-3 mb-3 d-flex">
             <div class="info">
-              <a class="d-block"> &nbsp;  &nbsp;  &nbsp; Kullanıcı Adı</a>
+              <a class="d-block"> &nbsp;  &nbsp;  &nbsp; &nbsp; Hoşgeldin {{kulAdi}}
+              </a>
             </div>
           </div>
           <!-- Sidebar Menu -->
@@ -43,7 +44,7 @@
               data-accordion="false"
             >
             <!-- *ngIf="isAdmin" -->
-              <li class="nav-item">
+              <li class="nav-item" *ngIf="isAdmin">
                 <a class="nav-link" routerLink="/kullanicilistele">
                   <i class="fas fa-user"></i> &nbsp;
                   <p>
@@ -59,7 +60,7 @@
                   </p>
                 </a>
               </li>
-              <li class="nav-item">
+              <li class="nav-item" *ngIf="isAdmin">
                 <a class="nav-link" routerLink="/illistele">
                   <i class="fas fa-city"></i> &nbsp;
                   <p>
@@ -67,7 +68,7 @@
                   </p>
                 </a>
               </li>
-              <li class="nav-item">
+              <li class="nav-item" *ngIf="isAdmin">
                 <a class="nav-link" routerLink="/ilcelistele">
                   <i class="fas fa-building"></i> &nbsp;
                   <p>
@@ -75,7 +76,7 @@
                   </p>
                 </a>
               </li>
-              <li class="nav-item">
+              <li class="nav-item" *ngIf="isAdmin">
                 <a class="nav-link" routerLink="/mahallelistele">
                   <i class="far fa-building"></i> &nbsp;
                   <p>
@@ -83,7 +84,7 @@
                   </p>
                 </a>
               </li>
-              <li class="nav-item">
+              <li class="nav-item" *ngIf="isAdmin">
                 <a class="nav-link" routerLink="/loglistele">
                   <i class="fas fa-clipboard-list"></i> &nbsp;
                   <p>

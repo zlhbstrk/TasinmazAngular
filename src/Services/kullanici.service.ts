@@ -19,7 +19,7 @@ export class KullaniciService {
 
   Ekle(kullanici: Kullanici): Observable<Kullanici> {
     return this.http
-      .post<Kullanici>(this.baseURL + 'Add', kullanici)
+      .post<Kullanici>(this.baseURL + 'Add', kullanici, Helper.getHeader())
       .pipe(catchError(this.handleError));
   }
   
@@ -28,25 +28,25 @@ export class KullaniciService {
     takeDeger: number
   ): Observable<Kullanici[]> {
     return this.http
-      .get<Kullanici[]>(this.baseURL + 'GetAll/' + skipDeger + '/' + takeDeger)
+      .get<Kullanici[]>(this.baseURL + 'GetAll/' + skipDeger + '/' + takeDeger, Helper.getHeader())
       .pipe(catchError(this.handleError));
   }
 
   Sil(id: number) {
     return this.http
-      .delete(this.baseURL + 'Delete/' + id)
+      .delete(this.baseURL + 'Delete/' + id, Helper.getHeader())
       .pipe(catchError(this.handleError));
   }
 
   Duzenle(kullanici: Kullanici): Observable<Kullanici> {
     return this.http
-      .put<Kullanici>(this.baseURL + 'Update', kullanici)
+      .put<Kullanici>(this.baseURL + 'Update', kullanici, Helper.getHeader())
       .pipe(catchError(this.handleError));
   }
 
   Getir(id: number): Observable<Kullanici> {
     return this.http
-      .get<Kullanici>(this.baseURL + 'GetById/' + id)
+      .get<Kullanici>(this.baseURL + 'GetById/' + id, Helper.getHeader())
       .pipe(catchError(this.handleError));
   }
 
@@ -72,6 +72,11 @@ export class KullaniciService {
       return false;
     }
   }
+
+ kulAdi() {
+   const currentUser = JSON.parse(localStorage.getItem('currentUser')!) as Kullanici;
+   return currentUser.Ad;
+ }
 
   isLoggedIn() {
     if (localStorage.getItem('currentUser')) {

@@ -58,11 +58,11 @@ export class LoginComponent implements OnInit {
             icon: 'success',
             confirmButtonText: 'Tamam',
           });
-          this.router.navigate(['/tasinmazlistele']);
+          this.router.navigate(['/welcome']);
         }
         else{
           Swal.fire({
-            title: 'Bşarısız!',
+            title: 'Başarısız!',
             text: 'Kullanıcı adı veya parola hatalı!',
             icon: 'error',
             confirmButtonText: 'Tamam',

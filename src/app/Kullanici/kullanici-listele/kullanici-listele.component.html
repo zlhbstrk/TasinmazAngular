@@ -109,7 +109,11 @@
                             id="listing_pagination"
                             directionLinks:1
                             (pageChange)="
-                              sayfaGetir(($event-1) * kayitSayi, kayitSayi, $event)
+                              sayfaGetir(
+                                ($event - 1) * kayitSayi,
+                                kayitSayi,
+                                $event
+                              )
                             "
                           ></pagination-controls>
                         </div>

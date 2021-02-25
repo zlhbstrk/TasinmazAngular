@@ -2,6 +2,7 @@ import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
+import { Helper } from 'src/Helpers/helper';
 import { Ilce } from 'src/Models/Ilce';
 import Swal from 'sweetalert2';
 
@@ -15,32 +16,32 @@ export class IlceService {
 
   Ekle(ilce:Ilce) : Observable<Ilce>
   {
-   return this.http.post<Ilce>(this.baseURL + 'Add', ilce).pipe(catchError(this.handleError));
+   return this.http.post<Ilce>(this.baseURL + 'Add', ilce, Helper.getHeader()).pipe(catchError(this.handleError));
   }
 
   GetirIlce(skipDeger:number, takeDeger:number) : Observable<Ilce[]>
   {
-    return this.http.get<Ilce[]>(this.baseURL + "GetAll/" + skipDeger + "/" + takeDeger).pipe(catchError(this.handleError));
+    return this.http.get<Ilce[]>(this.baseURL + "GetAll/" + skipDeger + "/" + takeDeger, Helper.getHeader()).pipe(catchError(this.handleError));
   }
 
   FullGetirIlce() : Observable<Ilce[]>
   {
-    return this.http.get<Ilce[]>(this.baseURL + "FullGetAll").pipe(catchError(this.handleError));
+    return this.http.get<Ilce[]>(this.baseURL + "FullGetAll", Helper.getHeader()).pipe(catchError(this.handleError));
   }
 
   Sil(id:number) 
   {
-    return this.http.delete(this.baseURL + "Delete/" + id).pipe(catchError(this.handleError));
+    return this.http.delete(this.baseURL + "Delete/" + id, Helper.getHeader()).pipe(catchError(this.handleError));
   }
 
   Duzenle(ilce:Ilce) : Observable<Ilce>
   {
-    return this.http.put<Ilce>(this.baseURL + "Update", ilce).pipe(catchError(this.handleError));
+    return this.http.put<Ilce>(this.baseURL + "Update", ilce, Helper.getHeader()).pipe(catchError(this.handleError));
   }
 
   Getir(id:number) : Observable<Ilce>
   {
-    return this.http.get<Ilce>(this.baseURL + "GetById/" + id).pipe(catchError(this.handleError));
+    return this.http.get<Ilce>(this.baseURL + "GetById/" + id, Helper.getHeader()).pipe(catchError(this.handleError));
   }
 
   Count() : Observable<number>

@@ -40,14 +40,15 @@
                          
                           <div class="col-md-2">
                             <div class="form-group">
-                              <a
+                              <button
                                 type="submit"
                                 class="btn btn-primary btn-block"
                                 (click)="Search()"
+                                [disabled]="form.invalid"
                               >
                                 <i class="fas fa-search"></i>
                                 &nbsp; ARA
-                              </a>
+                              </button>
                             </div>
                           </div>
                         </div>

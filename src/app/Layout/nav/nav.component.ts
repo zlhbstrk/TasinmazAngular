@@ -12,9 +12,10 @@ export class NavComponent implements OnInit {
   constructor(private kullaniciServis: KullaniciService) { }
 
   isAdmin:boolean = true;
+  kulAdi:string = "";
 
   ngOnInit(): void {
     this.isAdmin = this.kullaniciServis.isAdmin();
+    this.kulAdi = this.kullaniciServis.kulAdi();  
   }
-
 }

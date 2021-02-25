@@ -7,7 +7,7 @@ import { NavComponent } from './Layout/nav/nav.component';
 import { HeaderComponent } from './Layout/header/header.component';
 import { FooterComponent } from './Layout/footer/footer.component';
 import { IlEkleComponent } from './Il/il-ekle/il-ekle.component';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
 import { HttpClientModule } from '@angular/common/http';
 import { IlListeleComponent } from './Il/il-listele/il-listele.component';
@@ -70,7 +70,8 @@ import { NgSearchPipe } from 'ng-search-pipe';
     NgxPaginationModule,
     Ng2SearchPipeModule,
     Ng2OrderModule,
-    NgSearchPipe
+    NgSearchPipe,
+    FormsModule
   ],
   providers: [KullaniciService, LoginGuard],
   bootstrap: [AppComponent]

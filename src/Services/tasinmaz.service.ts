@@ -2,6 +2,7 @@ import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
+import { Helper } from 'src/Helpers/helper';
 import { Tasinmaz } from 'src/Models/Tasinmaz';
 import Swal from 'sweetalert2';
 
@@ -16,32 +17,32 @@ export class TasinmazService {
 
   Ekle(tasinmaz:Tasinmaz) : Observable<Tasinmaz>
   {
-   return this.http.post<Tasinmaz>(this.baseURL + 'Add', tasinmaz).pipe(catchError(this.handleError));
+   return this.http.post<Tasinmaz>(this.baseURL + 'Add', tasinmaz, Helper.getHeader()).pipe(catchError(this.handleError));
   }
 
   GetirTasinmaz(skipDeger:number, takeDeger:number) :Observable<Tasinmaz[]>
   {
-    return this.http.get<Tasinmaz[]>(this.baseURL + "GetAll/" + skipDeger + "/" + takeDeger).pipe(catchError(this.handleError));
+    return this.http.get<Tasinmaz[]>(this.baseURL + "GetAll/" + skipDeger + "/" + takeDeger, Helper.getHeader()).pipe(catchError(this.handleError));
   }
   
   Filtre(filtre:string) :Observable<Tasinmaz[]>
   {
-    return this.http.get<Tasinmaz[]>(this.baseURL + "GetAllFilter/" + filtre).pipe(catchError(this.handleError));
+    return this.http.get<Tasinmaz[]>(this.baseURL + "GetAllFilter/" + filtre, Helper.getHeader()).pipe(catchError(this.handleError));
   }
 
   Sil(id:number)
   {
-    return this.http.delete(this.baseURL + "Delete/"+ id).pipe(catchError(this.handleError));
+    return this.http.delete(this.baseURL + "Delete/"+ id, Helper.getHeader()).pipe(catchError(this.handleError));
   }
 
   Duzenle(tasinmaz:Tasinmaz) : Observable<Tasinmaz>
   {
-    return this.http.put<Tasinmaz>(this.baseURL + "Update", tasinmaz).pipe(catchError(this.handleError));
+    return this.http.put<Tasinmaz>(this.baseURL + "Update", tasinmaz, Helper.getHeader()).pipe(catchError(this.handleError));
   }
 
   Getir(id:number) : Observable<Tasinmaz>
   {
-    return this.http.get<Tasinmaz>(this.baseURL + "GetById/" + id).pipe(catchError(this.handleError));
+    return this.http.get<Tasinmaz>(this.baseURL + "GetById/" + id, Helper.getHeader()).pipe(catchError(this.handleError));
   }
 
   Count() : Observable<number>

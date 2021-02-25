@@ -67,6 +67,7 @@ export class TasinmazDuzenleComponent implements OnInit {
   onIlChanged(){
     const ilId:number = this.form.controls['IlId'].value;
     this.ilceler = this.tumIlceler.filter((e)=>{
+      this.mahalleler = []; //Harun bakacak!
       return e.IlId == ilId;
     });
   }
