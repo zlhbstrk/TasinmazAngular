@@ -48,7 +48,7 @@ export class TasinmazListeleComponent implements OnInit {
       buttons: ['excel'],
     };
 
-    this.tasinmazSevis.GetirTasinmaz(0, this.kayitSayi).subscribe((data) => {
+    this.tasinmazSevis.GetSearchAndFilter(0, this.kayitSayi, "-1").subscribe((data) => {
       this.tasinmazlar = data;
 
       this.dtTrigger.next();
@@ -70,7 +70,11 @@ export class TasinmazListeleComponent implements OnInit {
   sayfaGetir(skipDeger: number, takeDeger: number | any, event?: number) {
     this.sayfa = event ? event : 1;
     this.kayitSayi = takeDeger;
-    this.tasinmazSevis.GetirTasinmaz(skipDeger, takeDeger).subscribe((data) => {
+    // this.tasinmazSevis.GetirTasinmaz(skipDeger, takeDeger).subscribe((data) => {
+    //   this.tasinmazlar = data;
+    let input:string = this.form.controls['searchInput'].value;
+    input = input.length == 0 ? "-1" : input;
+    this.tasinmazSevis.GetSearchAndFilter(skipDeger, takeDeger, input).subscribe((data) => {
       this.tasinmazlar = data;
     });
   }
@@ -79,9 +83,19 @@ export class TasinmazListeleComponent implements OnInit {
     const input = this.form.controls['searchInput'].value;
     if(input)
     {
-      this.tasinmazSevis.Filtre(input).subscribe((data) => {
-        alert(data);
+      // this.tasinmazSevis.Filtre(input).subscribe((data) => {
+      //   alert(data);
+      //   this.tasinmaz = data;
+      // });
+      this.tasinmazSevis.GetSearchAndFilter(0, this.kayitSayi, input).subscribe((data) => {
         this.tasinmaz = data;
+
+        this.tasinmazSevis.FilterCount(input).subscribe((data) => {
+          this.pageCount = data;
+        });
+        this.tasinmazSevis.Count().subscribe((count) => {
+          this.pageCount = count;
+        });
       });
     } 
   }

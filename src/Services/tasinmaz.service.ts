@@ -49,6 +49,18 @@ export class TasinmazService {
   {
     return this.http.get<number>(this.baseURL + "GetCount").pipe(catchError(this.handleError));
   }
+
+  FilterCount(filter: string): Observable<number> {
+    return this.http
+      .get<number>(this.baseURL + 'FilterGetCount/' + filter)
+      .pipe(catchError(this.handleError));
+  }
+
+  GetSearchAndFilter(skipDeger: number, takeDeger: number, filtre: string): Observable<Tasinmaz[]> {
+    return this.http
+      .get<Tasinmaz[]>(this.baseURL + 'GetSearchAndFilter/'  + skipDeger + '/' + takeDeger + '/' + filtre)
+      .pipe(catchError(this.handleError));
+  }
   
   handleError(err: HttpErrorResponse){
     Swal.fire({

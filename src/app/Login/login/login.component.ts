@@ -48,9 +48,6 @@ export class LoginComponent implements OnInit {
       )
       .subscribe((data:any) => {
         if (data.Result) {
-          this.ipServis.getIpAddress().toPromise().then((data:any)=>{
-            localStorage.setItem('ip', data.ip);
-          });
           localStorage.setItem('currentUser', JSON.stringify(data.Result));
           Swal.fire({
             title: 'Başarılı',

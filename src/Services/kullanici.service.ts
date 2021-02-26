@@ -58,7 +58,7 @@ export class KullaniciService {
 
   Login(email: string, sifre: string): Observable<Kullanici> {
     return this.http
-      .get<Kullanici>(this.baseURL + 'Login/' + email + '/' + sifre)
+      .get<Kullanici>(this.baseURL + 'Login/' + email + '/' + sifre, Helper.getHeaderUnAuth(email))
       .pipe(catchError(this.handleError));
   }
 
@@ -87,9 +87,9 @@ export class KullaniciService {
   }
 
   logOut() {
-    localStorage.removeItem('currentUser');
-    localStorage.removeItem('ip');
+  
     this.loggedIn = false;
+    return this.http.get(this.baseURL + 'Logout', Helper.getHeader()).pipe(catchError(this.handleError));
   }
 
   handleError(err: HttpErrorResponse) {

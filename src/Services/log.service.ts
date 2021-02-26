@@ -18,6 +18,17 @@ export class LogService {
       .get<Log[]>(this.baseURL + 'GetAll/' + skipDeger + '/' + takeDeger)
       .pipe(catchError(this.handleError));
   }
+  Filtre(filtre: string): Observable<Log[]> {
+    return this.http
+      .get<Log[]>(this.baseURL + 'GetAllFilter/' + filtre)
+      .pipe(catchError(this.handleError));
+  }
+
+  GetSearchAndFilter(skipDeger: number, takeDeger: number, filtre: string): Observable<Log[]> {
+    return this.http
+      .get<Log[]>(this.baseURL + 'GetSearchAndFilter/'  + skipDeger + '/' + takeDeger + '/' + filtre)
+      .pipe(catchError(this.handleError));
+  }
 
   Count(): Observable<number> {
     return this.http
@@ -25,9 +36,9 @@ export class LogService {
       .pipe(catchError(this.handleError));
   }
 
-  Filtre(filtre: string): Observable<Log[]> {
+  FilterCount(filter: string): Observable<number> {
     return this.http
-      .get<Log[]>(this.baseURL + 'GetAllFilter/' + filtre)
+      .get<number>(this.baseURL + 'FilterGetCount/' + filter)
       .pipe(catchError(this.handleError));
   }
 

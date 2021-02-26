@@ -16,7 +16,11 @@ export class HeaderComponent implements OnInit {
   }
 
   logOut(){
-    this.kullaniciServis.logOut();
+    this.kullaniciServis.logOut().subscribe((data)=>{
+      localStorage.removeItem('currentUser');
+      localStorage.removeItem('ip');
+    });
+    
     
     this.router.navigate(['/login']);
   }
