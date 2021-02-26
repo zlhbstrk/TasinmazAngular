@@ -25,7 +25,8 @@ export class IlListeleComponent implements OnInit {
     this.dtOptions = {
       dom: 'Brt',
       pagingType: 'full_numbers',
-      buttons: [ ]
+      buttons: [ ],
+      responsive: true
     };
 
     this.IlServis.GetirIl(0, this.kayitSayi).subscribe((data) => {

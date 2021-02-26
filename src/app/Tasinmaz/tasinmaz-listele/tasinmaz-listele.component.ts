@@ -46,6 +46,7 @@ export class TasinmazListeleComponent implements OnInit {
       dom: 'Brt',
       pagingType: 'full_numbers',
       buttons: ['excel'],
+      responsive: true
     };
 
     this.tasinmazSevis.GetSearchAndFilter(0, this.kayitSayi, "-1").subscribe((data) => {

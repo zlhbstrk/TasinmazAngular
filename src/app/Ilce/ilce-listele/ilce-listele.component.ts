@@ -26,7 +26,8 @@ export class IlceListeleComponent implements OnInit {
     this.dtOptions = {
       dom: 'Brt',
       pagingType: 'full_numbers',
-      buttons: [ ]
+      buttons: [ ],
+      responsive: true
     };
 
     this.IlceServis.GetirIlce(0,this.kayitSayi).subscribe((data) => {

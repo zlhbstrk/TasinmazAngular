@@ -32,6 +32,7 @@ export class MahalleListeleComponent implements OnInit {
       dom: 'Brt',
       pagingType: 'full_numbers',
       buttons: [ ],
+      responsive: true
     };
 
     this.MahalleServis.GetirMahalle(0, this.kayitSayi).subscribe((data) => {

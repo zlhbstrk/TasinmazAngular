@@ -22,7 +22,7 @@ export class TasinmazService {
 
   GetirTasinmaz(skipDeger:number, takeDeger:number) :Observable<Tasinmaz[]>
   {
-    return this.http.get<Tasinmaz[]>(this.baseURL + "GetAll/" + skipDeger + "/" + takeDeger, Helper.getHeader()).pipe(catchError(this.handleError));
+    return this.http.get<Tasinmaz[]>(this.baseURL + "FullGetAll/" + skipDeger + "/" + takeDeger, Helper.getHeader()).pipe(catchError(this.handleError));
   }
   
   Filtre(filtre:string) :Observable<Tasinmaz[]>

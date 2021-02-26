@@ -25,6 +25,7 @@ export class KullaniciListeleComponent implements OnInit {
       dom: 'Brt',
       pagingType: 'full_numbers',
       buttons: [],
+      responsive: true
     };
 
     this.KullaniciServis.GetirKullanici(0, this.kayitSayi).subscribe((data) => {
