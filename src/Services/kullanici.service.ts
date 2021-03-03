@@ -38,6 +38,12 @@ export class KullaniciService {
       .pipe(catchError(this.handleError));
   }
 
+  SifreDegistir(kullanici: any):Observable<any> {
+    return this.http
+      .put<any>(this.baseURL + 'PasswordChange/' + kullanici.Id, kullanici, Helper.getHeader())
+      .pipe(catchError(this.handleError));
+  }
+
   Duzenle(kullanici: Kullanici): Observable<Kullanici> {
     return this.http
       .put<Kullanici>(this.baseURL + 'Update', kullanici, Helper.getHeader())

@@ -12,6 +12,7 @@
           class="form-control"
           placeholder="İlçe Adı Giriniz."
           formControlName="Ad"
+          pattern="[a-zA-ZğüşıöçĞÜŞİÖÇ]+"
           [class]="form.get('Ad')!.invalid ? 'is-invalid' : 'is-valid'"
         />
       </div>

@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Kullanici } from 'src/Models/Kullanici';
-import { IpService } from 'src/Services/ip.service';
 import { KullaniciService } from 'src/Services/kullanici.service';
 import Swal from 'sweetalert2';
 
@@ -15,8 +14,7 @@ export class LoginComponent implements OnInit {
 
   constructor(
     private kullaniciServis: KullaniciService,
-    private router: Router,
-    private ipServis: IpService
+    private router: Router
   ){}
 
   model!: Kullanici;
@@ -35,6 +33,7 @@ export class LoginComponent implements OnInit {
       ]),
       Sifre: new FormControl(null, [
         Validators.required,
+        Validators.pattern("^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[@#$!%*?&.+/-])[A-Za-z0-9@#$!%*?&.+/-]{8,20}$"),
         Validators.minLength(8),
       ]),
     });
@@ -55,7 +54,7 @@ export class LoginComponent implements OnInit {
             icon: 'success',
             confirmButtonText: 'Tamam',
           });
-          this.router.navigate(['/welcome']);
+          this.router.navigate(['/tasinmazlistele']);
         }
         else{
           Swal.fire({

@@ -12,7 +12,9 @@
           class="form-control"
           placeholder="Kullanıcı Adı Giriniz."
           formControlName="Ad"
-          pattern="[a-zA-Z-]+"
+          autofocus
+          pattern="[a-zA-ZğüşıöçĞÜŞİÖÇ ]+"
+          [class]="form.get('Ad')!.invalid ? 'is-invalid' : 'is-valid'"
         />
       </div>
       <div class="form-group">
@@ -22,7 +24,8 @@
           class="form-control"
           placeholder="Kullanıcı Soyadı Giriniz."
           formControlName="Soyad"
-          pattern="[a-zA-Z-]+"
+          pattern="[a-zA-ZğüşıöçĞÜŞİÖÇ ]+"
+          [class]="form.get('Soyad')!.invalid ? 'is-invalid' : 'is-valid'"
         />
       </div>
       <div class="form-group">
@@ -32,7 +35,6 @@
           class="form-control"
           placeholder="E-mail Giriniz."
           formControlName="Email"
-          required autofocus
           [class]="form.get('Email')!.invalid ? 'is-invalid' : 'is-valid'"
         />
       </div>
@@ -53,6 +55,7 @@
           class="custom-select form-control"
           [class]="form.get('Yetki')!.invalid ? 'is-invalid' : 'is-valid'"
         >
+        <option disabled value="null">Yetki Tipi Seçiniz.</option>
           <option *ngFor="let yt of yetkiTipi" value="{{ yt.yetkiKod }}">
             {{ yt.yetkiAd }}
           </option>

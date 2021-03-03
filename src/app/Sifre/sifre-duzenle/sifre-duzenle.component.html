@@ -1,0 +1,67 @@
+<div class="card card-danger">
+  <div class="card-header">
+    <h3 class="card-title">Şifre Düzenle Ekranı</h3>
+  </div>
+
+  <form [formGroup]="form" (ngSubmit)="onSubmit()">
+    <div class="card-body">
+      <div class="form-group">
+        <label>Mevcut Şifre</label>
+        <input
+          type="password"
+          class="form-control"
+          placeholder="Mevcut Şifre Giriniz."
+          formControlName="MevcutSifre"
+          [class]="form.get('MevcutSifre')!.invalid ? 'is-invalid' : 'is-valid'"
+        />
+      </div>
+      <div class="form-group">
+        <label>Yeni Şifre</label>
+        <input
+          type="password"
+          class="form-control"
+          placeholder="Yeni Şifre Giriniz."
+          formControlName="YeniSifre"
+          [class]="form.get('YeniSifre')!.invalid ? 'is-invalid' : 'is-valid'"
+          (keyup)="passwordChange()"
+        />
+      </div>
+      <div class="form-group">
+        <label>Yeni Şifre (Tekrar)</label>
+        <input
+          type="password"
+          class="form-control"
+          placeholder="Yeni Şifre (Tekrar) Giriniz."
+          formControlName="YeniSifreTekrar"
+          [class]="
+            form.get('YeniSifreTekrar')!.invalid ? 'is-invalid' : 'is-valid'
+          "
+          (keyup)="passwordChange()"
+        />
+      </div>
+      <div class="form-group" *ngIf="isPassEqual">
+        <label style="color: tomato">Parolalar Eşit Olmalı</label>
+      </div>
+    </div>
+    <div class="card-footer">
+      <div class="row">
+        <div class="col-md-6">
+          <button
+            type="submit"
+            class="btn btn-primary"
+            [disabled]="form.invalid"
+          >
+            <i class="fas fa-save"></i> &nbsp; KAYDET
+          </button>
+          <button
+            type="reset"
+            class="btn btn-default"
+            style="margin-left: 16px"
+          >
+            <i class="fas fa-trash-alt"></i> &nbsp; Temizle
+          </button>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>

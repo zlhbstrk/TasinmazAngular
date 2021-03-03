@@ -33,6 +33,7 @@ export class MahalleService {
       .get<Mahalle[]>(this.baseURL + 'FullGetAll', Helper.getHeader())
       .pipe(catchError(this.handleError));
   }
+  
   Sil(id: number) {
     return this.http
       .delete(this.baseURL + 'Delete/' + id, Helper.getHeader())

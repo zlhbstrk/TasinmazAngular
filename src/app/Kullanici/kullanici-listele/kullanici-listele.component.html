@@ -36,7 +36,6 @@
                           <th>Adı</th>
                           <th>Soyadı</th>
                           <th>E-mail</th>
-                          <th>Şifre</th>
                           <th>Yetki</th>
                           <th style="width: 95px">İşlemler</th>
                         </tr>
@@ -57,7 +56,6 @@
                           <td>{{ kullanici.Ad }}</td>
                           <td>{{ kullanici.Soyad }}</td>
                           <td>{{ kullanici.Email }}</td>
-                          <td>{{ kullanici.Sifre }}</td>
                           <td *ngIf="kullanici.Yetki == 1">
                             Sistem Yöneticisi
                           </td>

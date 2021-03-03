@@ -21,8 +21,6 @@ export class MahalleDuzenleComponent implements OnInit {
   iller!:Il[];
   ilceler!:Ilce[];
   tumIlceler!:Ilce[];
-  // mahalleler!:Mahalle[];
-  // tumMahalleler!:Mahalle[];
   model!:Mahalle;
   id!:number;
 
@@ -50,7 +48,6 @@ export class MahalleDuzenleComponent implements OnInit {
       this.form.controls['IlId'].setValue(data.Ilce.IlId)
       this.onIlChanged();
       this.form.controls['IlceId'].setValue(data.IlceId)
-      // console.log(JSON.stringify(data.Ilce));
     });
   }
   

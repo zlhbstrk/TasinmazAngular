@@ -12,8 +12,8 @@
           class="form-control"
           placeholder="Mahalle Adı Giriniz."
           formControlName="Ad"
-          required autofocus
-          pattern="[a-zA-Z-]+"
+          autofocus
+          pattern="[a-zA-ZğüşıöçĞÜŞİÖÇ. ]+"
           [class]="form.get('Ad')!.invalid ? 'is-invalid' : 'is-valid'"
         />
       </div>
@@ -25,6 +25,7 @@
           (change)="onIlChanged()"
           [class]="form.get('IlId')!.invalid ? 'is-invalid' : 'is-valid'"
         >
+        <option disabled value="null">İl Seçiniz.</option>
           <option *ngFor="let il of iller" value="{{ il.Id }}">
             {{ il.Ad }}
           </option>
@@ -37,6 +38,7 @@
           class="custom-select form-control"
           [class]="form.get('IlceId')!.invalid ? 'is-invalid' : 'is-valid'"
         >
+        <option disabled value="null">İlçe Seçiniz.</option>
           <option *ngFor="let ilce of ilceler" value="{{ ilce.Id }}">
             {{ ilce.Ad }}
           </option>

@@ -50,6 +50,7 @@
             class="form-control"
             placeholder="Ada Bilgisi Giriniz."
             formControlName="Ada"
+            pattern="\d*"
             [class]="form.get('Ada')!.invalid ? 'is-invalid' : 'is-valid'"
           />
         </div>
@@ -60,6 +61,7 @@
             class="form-control"
             placeholder="Parsel Bilgisi Giriniz."
             formControlName="Parsel"
+            pattern="\d*"
             [class]="form.get('Parsel')!.invalid ? 'is-invalid' : 'is-valid'"
           />
         </div>

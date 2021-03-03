@@ -69,8 +69,10 @@ export class LogListeleComponent implements OnInit {
   Search() {
     const input = this.form.controls['searchInput'].value;
     if (input) {
-
       this.logServis.GetSearchAndFilter(0, this.kayitSayi, input).subscribe((data) => {
+        data.forEach((e) => {
+          e.Tarih = Helper.tarihFormatla(new Date(e.Tarih!));
+        });
         this.loglar = data;
 
         this.logServis.FilterCount(input).subscribe((data) => {

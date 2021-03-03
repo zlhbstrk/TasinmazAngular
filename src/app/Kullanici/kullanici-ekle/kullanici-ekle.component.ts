@@ -22,14 +22,15 @@ export class KullaniciEkleComponent implements OnInit {
   model!:Kullanici;
 
   form = new FormGroup({
-    Ad: new FormControl(null, [Validators.maxLength(30)]),
-    Soyad: new FormControl(null, [Validators.maxLength(30)]),
+    Ad: new FormControl(null, [Validators.required, Validators.minLength(3), Validators.maxLength(30)]),
+    Soyad: new FormControl(null, [Validators.required, Validators.minLength(2), Validators.maxLength(30)]),
     Email: new FormControl(null, [Validators.required, Validators.pattern("^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$"), Validators.maxLength(50)]),
-    Sifre: new FormControl(null, [Validators.required, Validators.minLength(8)]),
+    Sifre: new FormControl(null, [Validators.required, Validators.pattern("^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[@#$!%*?&.+/-])[A-Za-z0-9@#$!%*?&.+/-]{8,20}$"), Validators.minLength(8)]),
     Yetki: new FormControl(null, [Validators.required])
   });
 
   ngOnInit(): void {
+    this.model.Sifre
   }
 
   onSubmit(){

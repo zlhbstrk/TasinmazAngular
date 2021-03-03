@@ -15,10 +15,10 @@ import { LoginGuard } from './Login/login/login.guard';
 import { MahalleDuzenleComponent } from './Mahalle/mahalle-duzenle/mahalle-duzenle.component';
 import { MahalleEkleComponent } from './Mahalle/mahalle-ekle/mahalle-ekle.component';
 import { MahalleListeleComponent } from './Mahalle/mahalle-listele/mahalle-listele.component';
+import { SifreDuzenleComponent } from './Sifre/sifre-duzenle/sifre-duzenle.component';
 import { TasinmazDuzenleComponent } from './Tasinmaz/tasinmaz-duzenle/tasinmaz-duzenle.component';
 import { TasinmazEkleComponent } from './Tasinmaz/tasinmaz-ekle/tasinmaz-ekle.component';
 import { TasinmazListeleComponent } from './Tasinmaz/tasinmaz-listele/tasinmaz-listele.component';
-import { WelcomeComponent } from './Welcome/welcome/welcome.component';
 
 const routes: Routes = [
   { path: 'ilekle', component: IlEkleComponent, canActivate:[LoginGuard] },
@@ -38,7 +38,7 @@ const routes: Routes = [
   { path: 'mahalleduzenle/:id', component: MahalleDuzenleComponent, canActivate:[LoginGuard]},
   { path: 'tasinmazduzenle/:id', component: TasinmazDuzenleComponent, canActivate:[LoginGuard]},
   { path: 'login', component: LoginComponent},
-  { path: 'welcome', component: WelcomeComponent}
+  { path: 'sifreduzenle', component: SifreDuzenleComponent}
 ];
 
 @NgModule({

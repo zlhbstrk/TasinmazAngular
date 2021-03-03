@@ -41,15 +41,9 @@ export class TasinmazEkleComponent implements OnInit {
     this.ilServis.FullGetirIl().subscribe((data) => {
       this.iller = data;
     }),
-    // this.ilceServis.FullGetirIlce().subscribe((data) => {
-    //   this.ilceler = data;
-    // }),
     this.ilceServis.FullGetirIlce().subscribe((data) => {
       this.tumIlceler = data;
     }),
-    // this.mahalleServis.FullGetirMahalle().subscribe((data) => {
-    //   this.mahalleler = data;
-    // });
     this.mahalleServis.FullGetirMahalle().subscribe((data) => {
       this.tumMahalleler = data;
     });

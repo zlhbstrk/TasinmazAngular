@@ -34,6 +34,8 @@ import { NgxPaginationModule } from 'ngx-pagination';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { Ng2OrderModule } from 'ng2-order-pipe';
 import { NgSearchPipe } from 'ng-search-pipe';
+import { SifreDuzenleComponent } from './Sifre/sifre-duzenle/sifre-duzenle.component';
+
 
 @NgModule({
   declarations: [
@@ -57,7 +59,8 @@ import { NgSearchPipe } from 'ng-search-pipe';
     KullaniciDuzenleComponent,
     MahalleDuzenleComponent,
     TasinmazDuzenleComponent,
-    LoginComponent
+    LoginComponent,
+    SifreDuzenleComponent,
   ],
   imports: [
     BrowserModule,
